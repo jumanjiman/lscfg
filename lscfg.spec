@@ -53,4 +53,7 @@ Think of it as an anorexic version of sysreport.
 
 
 %changelog
+* Sun Jul 25 2010 Paul Morgan <jumanjiman@gmail.com> 1.2.0-0
+- new package built with tito
+
 
