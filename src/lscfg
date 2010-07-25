@@ -245,11 +245,11 @@ EOF
 case $1 in
    
       -a|'')
-   	all | less
+   	all
 	;;
 
       -n|--network)
-   	network | less
+   	network
 	;;
 
       -h|--help)
