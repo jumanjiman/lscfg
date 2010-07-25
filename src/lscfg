@@ -1,0 +1,279 @@
+#!/bin/bash
+
+### This software may be freely redistributed under the terms of the GNU
+### public license.
+
+
+#####################################################
+### feel free to mod this as necessary for your needs
+### comments & suggestions are welcome..
+### flaming is not encouraged...
+### email jbenedic@redhat.com
+#####################################################
+
+############
+### VARS ###
+############
+
+### Date, Hostname, Kernel, Uptime
+version="1.2.0-0"
+crrntdate=`/bin/date`
+hstnm=`/bin/hostname`
+krn=`uname -a | awk '{print $3}'`
+rls=`cat /etc/redhat-release`
+up=`uptime|awk '{print $3 " "  $4 $5}'|sed s/,/" "/g`
+
+### search for number and type of CPU's
+CNUM=`cat /proc/cpuinfo|grep -i "model name"|wc -l`
+CTYP=`cat /proc/cpuinfo|grep "model name"|cut -d ":" -f2|sed 's/^[ ^t]*//'`
+
+### the next entry may need to be used on certain systems to get the complete processor type
+# CTYP=$(grep -i "model name" /proc/cpuinfo|cut -d ":" -f 2|tr -d '\n' )
+
+### memory
+mem=`/usr/bin/free -m`
+
+### check for existance of PCI adapters
+S=`/sbin/lspci | grep SCSI|wc -l`
+R=`/sbin/lspci | grep RAID|wc -l`
+E=`/sbin/lspci | grep Ethernet|wc -l`
+V=`/sbin/lspci | grep VGA|wc -l`
+
+### default run level
+RUN=`grep -i id /etc/inittab|cut -d ':' -f2`
+
+### networking vars
+ETH=$(for F in `ls /etc/sysconfig/network-scripts/ifcfg-*`; do
+             INT=`basename $F`
+             # check for the existance of this interface
+             echo "  -${INT}-"
+             echo ""         
+             cat $F|grep -v '#'         
+             echo ""       
+     done)
+
+HOST=`cat /etc/hosts|grep -v '#'`
+NET=`cat /etc/sysconfig/network`
+RES=`cat /etc/resolv.conf`
+DUP=`if [ -x /sbin/ethtool ]; then
+         /sbin/ethtool eth0 | egrep -i "speed|duplex"
+     else
+         /sbin/mii-tool
+     fi`
+GAT=`netstat -rn | grep -iv kernel`
+ARP=`/sbin/arp -a`
+
+### panic ??
+DM=`dmesg -n 1`
+if [ -n $DM ]; then
+    DM="No kernel panic messages found..."
+    else
+    DM=`dmesg -n 1`
+fi
+### services
+SVC=`chkconfig --list | grep on | awk '{print $1}'| pr -T --columns=3 -`
+
+### disk related vars
+MNT=`mount`
+USE=`df -h`
+FD=`fdisk -l`
+
+### functions
+usage () {
+    echo ""
+    echo "usage: lscfg [ -a ] [ -b ] [ -d ] [ -h ] [ -n ] [ -w ]"
+    echo "options are mutually exclusive"
+    echo ""
+}
+
+help () {
+usage
+cat <<EOF
+-a, --all	display all information available
+-b, --basic	display basic info only
+-d, --disk	display disk relevant info only
+-h, --help	display this file
+-n, --network	display network info only
+-w, --hardware	display general hardware info
+EOF
+}
+
+all () {
+    basic
+    hardware
+    panic
+    network
+    services
+    disk
+}
+
+panic () {
+
+cat <<EOF
+
++==========================+
+|| :: DMESG Panic Info :: ||
++==========================+
+
+ $DM
+EOF
+}
+
+hardware () {
+
+cat <<EOF
+
++===================================+
+|| :: CPU, MEMORY, AND PCI INFO :: ||
++===================================+
+
+( CPU # may be skewed if hyperthreading is enabled...)
+( If hyperthreading is enabled, divide the # below by 2...)
+
+ CPU Type               : $CTYP
+ # of CPU               : $CNUM
+
+ Memory Total           :
+
+$mem
+
+ PCI devices
+	                : $S SCSI dev(s) (counted separately from RAID device)
+			: $R RAID dev(s)
+                        : $E Ethernet dev(s)
+                        : $V VGA dev(s)
+EOF
+}
+
+services () {
+
+cat << EOF
+
++=======================+
+|| :: SERVICES INFO :: ||
++=======================+
+
+ Services "On Boot"	:
+
+$SVC
+EOF
+}
+network () {
+
+cat << EOF
+
++======================+
+|| :: NETWORK INFO :: ||
++======================+
+
+ Configured Interfaces  :
+
+$ETH
+
+ Network File           :
+
+$NET
+
+ Hosts File             :
+
+$HOST
+
+ Resolver File          :
+
+$RES
+
+ Speed & Duplex         :
+
+$DUP
+
+ IP Routing Table       :
+
+$GAT
+
+ ARP Cache              :
+
+$ARP
+EOF
+}
+
+disk () {
+cat << EOF
+
++=================================+
+|| :: DISK MOUNT & USAGE INFO :: ||
++=================================+
+
+ Mount Points           :
+
+$MNT
+
+ Usage                  :
+
+$USE
+
+ Layout                 :
+$FD
+EOF
+}
+
+basic () {
+
+cat << EOF
+
++====================+
+|| :: BASIC INFO :: ||
++====================+
+
+ Hostname is            : $hstnm
+ Current date stamp is  : $crrntdate
+ Kernel release is      : $krn
+ OS release is		: $rls
+ Uptime is              : $up
+ Default Run Level      : $RUN
+EOF
+}
+
+version () {
+
+cat << EOF
+
+lscfg version $version
+
+EOF
+}
+
+case $1 in
+   
+      -a|'')
+   	all | less
+	;;
+
+      -n|--network)
+   	network | less
+	;;
+
+      -h|--help)
+   	help 
+	;;
+
+      -b|--basic)
+   	basic
+	;;
+
+      -d|--disk)
+   	disk 
+	;;
+
+      -v|--version)
+   	version
+	;;
+
+      -w|--hardware)
+   	hardware 
+	;;
+
+      *)
+   	usage
+	;;
+
+esac
