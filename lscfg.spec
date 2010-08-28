@@ -3,11 +3,12 @@ Version:	1.2.0
 Release:	1%{?dist}
 Summary:	details the basic configuration of a Linux system
 
-Group:		Admin
+Group:		Applications/System
 License:	GPLv2
 URL:		http://github.com/jumanjiman/lscfg
 Source0:	%{name}-%{version}.tar.gz
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
+buildarch:	noarch
 
 Requires:	coreutils
 Requires:	grep
@@ -29,7 +30,7 @@ Think of it as an anorexic version of sysreport.
 
 
 %build
-
+# nothing to build
 
 %install
 %{__rm} -rf %{buildroot}
