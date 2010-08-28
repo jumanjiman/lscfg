@@ -1,6 +1,6 @@
 Name:		lscfg
 Version:	1.2.0
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	details the basic configuration of a Linux system
 
 Group:		Applications/System
@@ -54,6 +54,9 @@ Think of it as an anorexic version of sysreport.
 
 
 %changelog
+* Sat Aug 28 2010 Paul Morgan <jumanjiman@gmail.com> 1.2.0-2
+- build noarch (jumanjiman@gmail.com)
+
 * Sun Jul 25 2010 Paul Morgan <jumanjiman@gmail.com> 1.2.0-1
 - fixed typo in spec file
 
