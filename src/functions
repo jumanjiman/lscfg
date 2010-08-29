@@ -17,6 +17,11 @@ export PATH="${PATH}:/sbin"
 
 ### functions
 
+default_runlevel() {
+  awk -F: '/^id:/{print $2}' /etc/inittab
+  return $?
+}
+
 # one-dimensional array with asciidoc heading markers
 declare -a headings=("=" "==" "===" "====" "=====")
 

@@ -38,6 +38,6 @@ awk '{print $1 " seconds"}' /proc/uptime
 echo
 
 echo -n 'Default Run Level: '
-awk -F: '/^id:/{print $2}' /etc/inittab
+default_runlevel
 echo
 
