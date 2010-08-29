@@ -1,0 +1,180 @@
+#!/bin/bash
+
+### This software may be freely redistributed under the terms of the GNU
+### public license.
+
+# user may call lscfg via sudo
+export PATH="${PATH}:/sbin"
+
+
+#####################################################
+### feel free to mod this as necessary for your needs
+### comments & suggestions are welcome..
+### flaming is not encouraged...
+### email jbenedic@redhat.com
+#####################################################
+
+
+### functions
+usage () {
+    echo ""
+    echo "usage: lscfg [ -a ] [ -b ] [ -d ] [ -h ] [ -n ] [ -w ]"
+    echo "options are mutually exclusive"
+    echo ""
+}
+
+help () {
+usage
+cat <<EOF
+-a, --all	display all information available
+-b, --basic	display basic info only
+-d, --disk	display disk relevant info only
+-h, --help	display this file
+-n, --network	display network info only
+-w, --hardware	display general hardware info
+EOF
+}
+
+all () {
+    basic
+    hardware
+    panic
+    network
+    services
+    disk
+}
+
+panic () {
+
+cat <<EOF
+
++==========================+
+|| :: DMESG Panic Info :: ||
++==========================+
+
+ $DM
+EOF
+}
+
+hardware () {
+
+cat <<EOF
+
++===================================+
+|| :: CPU, MEMORY, AND PCI INFO :: ||
++===================================+
+
+( CPU # may be skewed if hyperthreading is enabled...)
+( If hyperthreading is enabled, divide the # below by 2...)
+
+ CPU Type               : $CTYP
+ # of CPU               : $CNUM
+
+ Memory Total           :
+
+$mem
+
+ PCI devices
+	                : $S SCSI dev(s) (counted separately from RAID device)
+			: $R RAID dev(s)
+                        : $E Ethernet dev(s)
+                        : $V VGA dev(s)
+EOF
+}
+
+services () {
+
+cat << EOF
+
++=======================+
+|| :: SERVICES INFO :: ||
++=======================+
+
+ Services "On Boot"	:
+
+$SVC
+EOF
+}
+network () {
+
+cat << EOF
+
++======================+
+|| :: NETWORK INFO :: ||
++======================+
+
+ Configured Interfaces  :
+
+$ETH
+
+ Network File           :
+
+$NET
+
+ Hosts File             :
+
+$HOST
+
+ Resolver File          :
+
+$RES
+
+ Speed & Duplex         :
+
+$DUP
+
+ IP Routing Table       :
+
+$GAT
+
+ ARP Cache              :
+
+$ARP
+EOF
+}
+
+disk () {
+cat << EOF
+
++=================================+
+|| :: DISK MOUNT & USAGE INFO :: ||
++=================================+
+
+ Mount Points           :
+
+$MNT
+
+ Usage                  :
+
+$USE
+
+ Layout                 :
+$FD
+EOF
+}
+
+basic () {
+
+cat << EOF
+
++====================+
+|| :: BASIC INFO :: ||
++====================+
+
+ Hostname is            : $hstnm
+ Current date stamp is  : $crrntdate
+ Kernel release is      : $krn
+ OS release is		: $rls
+ Uptime is              : $up
+ Default Run Level      : $RUN
+EOF
+}
+
+version () {
+
+cat << EOF
+
+lscfg version $version
+
+EOF
+}
