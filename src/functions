@@ -17,15 +17,6 @@ export PATH="${PATH}:/sbin"
 
 ### functions
 
-all () {
-    basic
-    hardware
-    panic
-    network
-    services
-    disk
-}
-
 panic () {
 
 cat <<EOF

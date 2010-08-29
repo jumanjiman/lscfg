@@ -107,7 +107,12 @@ FD=`fdisk -l`
 case $1 in
    
       -a|'')
-   	all
+    basic
+    hardware
+    panic
+    network
+    services
+    disk
 	;;
 
       -n|--network)
