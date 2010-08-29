@@ -91,6 +91,8 @@ echo "----"
 for interface in $interfaces; do
   heading 2 "Interface: $interface"
   do_checkpoint duplex $interface
+  do_checkpoint ip-addr $interface
+  do_checkpoint ip-stats $interface
 done
 
 #GAT=`netstat -rn | grep -iv kernel`
