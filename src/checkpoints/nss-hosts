@@ -1,0 +1,1 @@
+grep '^hosts:' /etc/nsswitch.conf

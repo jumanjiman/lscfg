@@ -1,0 +1,97 @@
+#!/bin/bash
+
+### This software may be freely redistributed under the terms of the GNU
+### public license.
+
+# user may call lscfg via sudo
+program_directory="${0%/*}"
+if [ -n "$program_directory" ]; then
+       PATH="$PATH:$program_directory"
+       export PATH
+fi
+
+. functions || exit 1
+
+
+heading 0 "Network configuration"
+
+heading 1 "System-wide settings"
+
+heading 2 "Global network configuration"
+do_checkpoint file /etc/sysconfig/network 
+
+heading 2 "Default gateways"
+do_checkpoint default_gateway
+
+heading 2 "Name resolution"
+
+heading 2 "Hostname databases"
+do_checkpoint nss-hosts
+
+heading 2 "Resolver"
+do_checkpoint file /etc/resolv.conf
+
+heading 2 "Network post-configuration"
+for _ud in up down; do
+  _file=/sbin/if${_ud}-local
+  if [ -x $_file ]; then
+    do_checkpoint file $_file
+  else
+    echo "$_file does not exist or is not executable."
+    echo
+  fi
+done
+
+heading 2 "IP rules"
+do_checkpoint ip-rules
+
+heading 2 "ARP Cache"
+do_checkpoint arp_cache
+
+
+
+heading 1 "Configured Interfaces"
+
+interfaces="$(ls /etc/sysconfig/network-scripts/ifcfg-* | \
+ awk -F/ '{print $NF}' | cut -d'-' -f2)"
+
+echo "IMPORTANT: This section shows the configuration file,
+not the actual configuration."
+
+for interface in $interfaces; do
+  heading 2 "Interface: $interface"
+  _net_dir=/etc/sysconfig/network-scripts
+  for _file in ifcfg route rule; do
+    if [ -r ${_net_dir}/${_file}-${interface} ]; then
+      do_checkpoint file ${_net_dir}/${_file}-${interface} 
+    fi
+  done
+done
+
+
+
+
+heading 1 "Actual interfaces"
+
+interfaces="$(/sbin/ip link show up |
+  awk -F: '/UP/{print $2}' |
+  sed -r 's/[[:space:]]//g')"
+
+
+echo "This section shows actual configuration for devices"
+echo "that are administratively UP. The following command"
+echo "enumerates the interfaces:"
+echo
+echo "----"
+cat << EOF
+/sbin/ip link show up | awk -F: '/UP/{print $2}' | sed -r 's/[[:space:]]//g'
+EOF
+echo "----"
+
+for interface in $interfaces; do
+  heading 2 "Interface: $interface"
+  do_checkpoint duplex $interface
+done
+
+#GAT=`netstat -rn | grep -iv kernel`
+

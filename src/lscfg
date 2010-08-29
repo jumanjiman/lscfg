@@ -114,13 +114,13 @@ case $1 in
     lscfg.basic
     hardware
     panic
-    network
+    lscfg.network
     services
     lscfg.disk
 	;;
 
       -n|--network)
-   	network
+   	lscfg.network
 	;;
 
       -h|--help)

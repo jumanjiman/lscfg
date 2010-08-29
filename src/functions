@@ -52,18 +52,31 @@ do_checkpoint() {
   _file=$checkpoints_dir/$1
   [[ -r $_file ]] || return 1
   echo
-  echo "Command:"
+  echo "Checkpoint:"
   echo
   echo "----"
   cat $_file
   echo "----"
   echo
+  echo "Command used to invoke this checkpoint:"
+  if [[ -n $2 ]]; then
+    _cmd="$_file $@"
+  else
+    _cmd="$_file"
+  fi
   echo
-  echo "Output:"
+  echo "----"
+  echo $_cmd
+  echo "----"
+  echo
+  echo "Output and return code:"
   echo
   #echo "[bash]"
   echo "----"
-  bash $_file
+  bash $_cmd
+  _rc=$?
+  echo 
+  echo "Return code: $_rc"
   echo "----"
   echo
 }
@@ -118,43 +131,6 @@ cat << EOF
  Services "On Boot"	:
 
 $SVC
-EOF
-}
-network () {
-
-cat << EOF
-
-+======================+
-|| :: NETWORK INFO :: ||
-+======================+
-
- Configured Interfaces  :
-
-$ETH
-
- Network File           :
-
-$NET
-
- Hosts File             :
-
-$HOST
-
- Resolver File          :
-
-$RES
-
- Speed & Duplex         :
-
-$DUP
-
- IP Routing Table       :
-
-$GAT
-
- ARP Cache              :
-
-$ARP
 EOF
 }
 
