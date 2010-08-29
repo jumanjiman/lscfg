@@ -1,0 +1,1 @@
+src/lscfg.8.asciidoc
