@@ -19,7 +19,7 @@ export PATH="${PATH}:/sbin"
 ############
 
 ### Date, Hostname, Kernel, Uptime
-version="1.2.0-0"
+version="1.2.0"
 crrntdate=`/bin/date`
 hstnm=`/bin/hostname`
 krn=`uname -a | awk '{print $3}'`
