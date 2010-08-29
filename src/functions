@@ -51,34 +51,39 @@ checkpoints_dir=checkpoints
 do_checkpoint() {
   _file=$checkpoints_dir/$1
   [[ -r $_file ]] || return 1
+
+  # description of checkpoints should be it tech appendix
+  #echo
+  #echo "Checkpoint:"
+  #echo
+  #echo "----"
+  #cat $_file
+  #echo "----"
+
+  # show invocation
+  _fake_cmd="$@"
   echo
-  echo "Checkpoint:"
-  echo
-  echo "----"
-  cat $_file
-  echo "----"
-  echo
-  echo "Command used to invoke this checkpoint:"
-  if [[ -n $2 ]]; then
+  echo "Checkpoint: $_fake_cmd"
+
+  # show output
+  if [[ $# -gt 1 ]]; then
     _cmd="$_file $@"
   else
     _cmd="$_file"
   fi
   echo
   echo "----"
-  echo $_cmd
-  echo "----"
-  echo
-  echo "Output and return code:"
-  echo
-  #echo "[bash]"
-  echo "----"
   bash $_cmd
   _rc=$?
+  # guarantee a non-empty code block
   echo 
-  echo "Return code: $_rc"
   echo "----"
+
+  # show warning if bad exit status
   echo
+  if [ $_rc -ne 0 ]; then
+    echo "WARNING: The checkpoint exit status was $_rc"
+  fi
 }
 
 

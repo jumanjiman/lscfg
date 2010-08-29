@@ -17,21 +17,27 @@ export PATH="${PATH}:/sbin"
 
 echo "== Basic information =="
 
-echo -n 'Hostname is            : '
+echo -n 'Hostname is: '
 hostname
+echo
 
-echo -n 'Current date stamp is  : '
+echo -n 'Current date stamp is: '
 date
+echo
 
-echo -n 'Kernel release is      : '
+echo -n 'Kernel release is: '
 uname -a | awk '{print $3}'
+echo
 
-echo -n 'OS release is		: '
+echo -n 'OS release is: '
 cat /etc/redhat-release
+echo
 
-echo -n 'Uptime is              : '
+echo -n 'Uptime is: '
 awk '{print $1 " seconds"}' /proc/uptime
+echo
 
-echo -n 'Default Run Level      : '
+echo -n 'Default Run Level: '
 awk -F: '/^id:/{print $2}' /etc/inittab
+echo
 
