@@ -3,6 +3,9 @@
 ### This software may be freely redistributed under the terms of the GNU
 ### public license.
 
+# user may call lscfg via sudo
+export PATH="${PATH}:/sbin"
+
 
 #####################################################
 ### feel free to mod this as necessary for your needs
