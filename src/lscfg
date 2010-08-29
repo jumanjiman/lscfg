@@ -92,7 +92,7 @@ case $1 in
     hardware
     panic
     lscfg.network
-    services
+    lscfg.services
     lscfg.disk
 	;;
 

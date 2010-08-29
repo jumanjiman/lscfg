@@ -1,0 +1,31 @@
+#!/bin/bash
+
+### This software may be freely redistributed under the terms of the GNU
+### public license.
+
+# user may call lscfg via sudo
+program_directory="${0%/*}"
+if [ -n "$program_directory" ]; then
+       PATH="$PATH:$program_directory"
+       export PATH
+fi
+
+. functions || exit 1
+
+heading 0 "Services information"
+
+heading 1 "Boot-time services"
+
+_dr=$(default_runlevel)
+boot_services="$(/sbin/chkconfig --list | awk "/$_dr:on/{print \$1}")"
+
+if [[ -z $boot_services ]]; then
+  echo 
+  echo "No services enabled for boot-time startup"
+  echo
+else
+  for svc in $boot_services; do
+    heading 2 "Service: $svc"
+    do_checkpoint service $svc
+  done
+fi
