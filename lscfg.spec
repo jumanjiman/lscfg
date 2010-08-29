@@ -10,6 +10,8 @@ Source0:	%{name}-%{version}.tar.gz
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 buildarch:	noarch
 
+buildrequires: asciidoc
+
 Requires:	coreutils
 Requires:	grep
 Requires:	sed
@@ -30,7 +32,8 @@ Think of it as an anorexic version of sysreport.
 
 
 %build
-# nothing to build
+# convert manpage
+a2x -d manpage -f manpage src/lscfg.8.asciidoc
 
 %install
 %{__rm} -rf %{buildroot}

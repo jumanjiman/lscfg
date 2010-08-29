@@ -1,0 +1,70 @@
+lscfg(8)
+========
+
+
+NAME
+----
+lscfg - list configuration
+
+
+SYNOPSIS
+--------
+'lscfg' [OPTIONS] 
+
+
+DESCRIPTION 
+-----------
+A bash script that details the basic configuration of 
+the system it is run against.
+
+
+OPTIONS
+-------
+The options are mutually exclusive.
+
+-a, --all::
+	List all available information
+
+-n, --network::
+	List only network information
+
+-h, --help::
+	List usage
+
+-b, --basic::
+	List only the most basic information
+
+-d, --disk::
+	List only disk related information
+
+-v, --version::
+	Print the version
+
+-w, --hardware::
+	List only hardware related information
+
+
+
+ENVIRONMENT
+-----------
+You need to be root to run this command
+
+
+COPYRIGHT
+---------
+This is free software.
+You may redistribute copies of it under the terms
+of the GNU General Public License
+http://www.gnu.org/licenses/gpl.html .
+
+There is NO WARRANTY, to the extent permitted by law.
+
+
+BUGS
+----
+duh.
+
+
+AUTHOR
+------
+jb
