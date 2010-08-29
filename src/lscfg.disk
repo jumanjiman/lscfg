@@ -1,0 +1,31 @@
+#!/bin/bash
+
+### This software may be freely redistributed under the terms of the GNU
+### public license.
+
+# user may call lscfg via sudo
+export PATH="${PATH}:/sbin"
+
+
+#####################################################
+### feel free to mod this as necessary for your needs
+### comments & suggestions are welcome..
+### flaming is not encouraged...
+### email jbenedic@redhat.com
+#####################################################
+
+. functions || exit 1
+
+heading 0 "Storage information"
+
+heading 1 "Block devices"
+do_checkpoint parted
+
+
+heading 1 "Filesystems"
+
+heading 2 "Mounted filesystems"
+do_checkpoint mount
+
+heading 2 "Filesystem utilization"
+do_checkpoint disk_utilization

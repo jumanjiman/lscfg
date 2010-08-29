@@ -17,6 +17,58 @@ export PATH="${PATH}:/sbin"
 
 ### functions
 
+# one-dimensional array with asciidoc heading markers
+declare -a headings=("=" "==" "===" "====" "=====")
+
+base_level=1
+
+heading() {
+  # inputs
+  desired_level=$1
+  text=$2
+
+  # sanity-check base_level
+  [ $base_level -ge 0 ] || base_level=0
+
+  # compute actual_level
+  actual_level=$(( $desired_level + $base_level ))
+
+  # sanity-check
+  [ $actual_level -ge 0 ] || actual_level=0
+  [ $actual_level -le 4 ] || actual_level=4
+
+  # formatted output
+  echo
+  echo
+  echo -n ${headings[$actual_level]}
+  echo -n " $2 "
+  echo -n ${headings[$actual_level]}
+  echo
+  echo
+}
+
+checkpoints_dir=checkpoints
+do_checkpoint() {
+  _file=$checkpoints_dir/$1
+  [[ -r $_file ]] || return 1
+  echo
+  echo "Command:"
+  echo
+  echo "----"
+  cat $_file
+  echo "----"
+  echo
+  echo
+  echo "Output:"
+  echo
+  #echo "[bash]"
+  echo "----"
+  bash $_file
+  echo "----"
+  echo
+}
+
+
 panic () {
 
 cat <<EOF
@@ -103,26 +155,6 @@ $GAT
  ARP Cache              :
 
 $ARP
-EOF
-}
-
-disk () {
-cat << EOF
-
-+=================================+
-|| :: DISK MOUNT & USAGE INFO :: ||
-+=================================+
-
- Mount Points           :
-
-$MNT
-
- Usage                  :
-
-$USE
-
- Layout                 :
-$FD
 EOF
 }
 

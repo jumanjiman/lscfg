@@ -1,0 +1,37 @@
+#!/bin/bash
+
+### This software may be freely redistributed under the terms of the GNU
+### public license.
+
+# user may call lscfg via sudo
+export PATH="${PATH}:/sbin"
+
+
+#####################################################
+### feel free to mod this as necessary for your needs
+### comments & suggestions are welcome..
+### flaming is not encouraged...
+### email jbenedic@redhat.com
+#####################################################
+
+
+echo "== Basic information =="
+
+echo -n 'Hostname is            : '
+hostname
+
+echo -n 'Current date stamp is  : '
+date
+
+echo -n 'Kernel release is      : '
+uname -a | awk '{print $3}'
+
+echo -n 'OS release is		: '
+cat /etc/redhat-release
+
+echo -n 'Uptime is              : '
+awk '{print $1 " seconds"}' /proc/uptime
+
+echo -n 'Default Run Level      : '
+awk -F: '/^id:/{print $2}' /etc/inittab
+

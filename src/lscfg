@@ -3,8 +3,12 @@
 ### This software may be freely redistributed under the terms of the GNU
 ### public license.
 
-# user may call lscfg via sudo
-export PATH="${PATH}:/sbin"
+program_directory="${0%/*}"
+if [ -n "$program_directory" ]; then
+       PATH="$PATH:$program_directory"
+       export PATH
+fi
+
 
 
 #####################################################
@@ -107,12 +111,12 @@ FD=`fdisk -l`
 case $1 in
    
       -a|'')
-    basic
+    lscfg.basic
     hardware
     panic
     network
     services
-    disk
+    lscfg.disk
 	;;
 
       -n|--network)
@@ -124,11 +128,11 @@ case $1 in
 	;;
 
       -b|--basic)
-   	basic
+   	lscfg.basic
 	;;
 
       -d|--disk)
-   	disk 
+   	lscfg.disk
 	;;
 
       -v|--version)
