@@ -1,6 +1,6 @@
 Name:		lscfg
 Version:	1.2.0
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	details the basic configuration of a Linux system
 
 Group:		Applications/System
@@ -57,6 +57,9 @@ a2x -d manpage -f manpage src/lscfg.8.asciidoc
 
 
 %changelog
+* Sun Aug 29 2010 Paul Morgan <jumanjiman@gmail.com> 1.2.0-3
+- use asciidoc to generate manpage
+
 * Sat Aug 28 2010 Paul Morgan <jumanjiman@gmail.com> 1.2.0-2
 - build noarch (jumanjiman@gmail.com)
 
