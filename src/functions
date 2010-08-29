@@ -158,23 +158,6 @@ $ARP
 EOF
 }
 
-basic () {
-
-cat << EOF
-
-+====================+
-|| :: BASIC INFO :: ||
-+====================+
-
- Hostname is            : $hstnm
- Current date stamp is  : $crrntdate
- Kernel release is      : $krn
- OS release is		: $rls
- Uptime is              : $up
- Default Run Level      : $RUN
-EOF
-}
-
 version () {
 
 cat << EOF
