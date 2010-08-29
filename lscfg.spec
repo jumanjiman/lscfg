@@ -33,14 +33,14 @@ Think of it as an anorexic version of sysreport.
 
 %build
 # convert manpage
-a2x -d manpage -f manpage src/lscfg.8.asciidoc
+a2x -d manpage -f manpage src/doc/lscfg.8.asciidoc
 
 %install
 %{__rm} -rf %{buildroot}
 %{__mkdir_p} %{buildroot}/%{_mandir}/man8
 %{__mkdir_p} %{buildroot}/%{_sbindir}
 %{__install} -m0755 src/lscfg %{buildroot}/%{_sbindir}
-%{__gzip} -c src/lscfg.8 > %{buildroot}/%{_mandir}/man8/lscfg.8.gz
+%{__gzip} -c src/doc/lscfg.8 > %{buildroot}/%{_mandir}/man8/lscfg.8.gz
 
 
 
