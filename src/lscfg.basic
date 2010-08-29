@@ -6,6 +6,7 @@
 # user may call lscfg via sudo
 export PATH="${PATH}:/sbin"
 
+. functions || exit 1
 
 #####################################################
 ### feel free to mod this as necessary for your needs
