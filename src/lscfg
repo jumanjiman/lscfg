@@ -66,27 +66,9 @@ R=`/sbin/lspci | grep RAID|wc -l`
 E=`/sbin/lspci | grep Ethernet|wc -l`
 V=`/sbin/lspci | grep VGA|wc -l`
 
-### default run level
-RUN=`grep -i id /etc/inittab|cut -d ':' -f2`
-
 ### networking vars
-ETH=$(for F in `ls /etc/sysconfig/network-scripts/ifcfg-*`; do
-             INT=`basename $F`
-             # check for the existance of this interface
-             echo "  -${INT}-"
-             echo ""         
-             cat $F|grep -v '#'         
-             echo ""       
-     done)
-
 HOST=`cat /etc/hosts|grep -v '#'`
 NET=`cat /etc/sysconfig/network`
-RES=`cat /etc/resolv.conf`
-DUP=`if [ -x /sbin/ethtool ]; then
-         /sbin/ethtool eth0 | egrep -i "speed|duplex"
-     else
-         /sbin/mii-tool
-     fi`
 GAT=`netstat -rn | grep -iv kernel`
 ARP=`/sbin/arp -a`
 
@@ -98,12 +80,7 @@ if [ -n $DM ]; then
     DM=`dmesg -n 1`
 fi
 ### services
-SVC=`chkconfig --list | grep on | awk '{print $1}'| pr -T --columns=3 -`
-
-### disk related vars
-MNT=`mount`
-USE=`df -h`
-FD=`fdisk -l`
+SVC=`/sbin/chkconfig --list | grep on | awk '{print $1}'| pr -T --columns=3 -`
 
 # source helper functions
 . functions
