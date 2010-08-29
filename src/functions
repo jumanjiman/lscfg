@@ -16,24 +16,6 @@ export PATH="${PATH}:/sbin"
 
 
 ### functions
-usage () {
-    echo ""
-    echo "usage: lscfg [ -a ] [ -b ] [ -d ] [ -h ] [ -n ] [ -w ]"
-    echo "options are mutually exclusive"
-    echo ""
-}
-
-help () {
-usage
-cat <<EOF
--a, --all	display all information available
--b, --basic	display basic info only
--d, --disk	display disk relevant info only
--h, --help	display this file
--n, --network	display network info only
--w, --hardware	display general hardware info
-EOF
-}
 
 all () {
     basic
