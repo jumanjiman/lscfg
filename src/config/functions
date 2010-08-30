@@ -20,15 +20,6 @@ default_runlevel() {
 # one-dimensional array with asciidoc heading markers
 headings=("=" "==" "===" "====" "=====")
 
-show_header() {
-  # begin a document
-  _title="${headings[$base_level]} $(hostname) ${headings[$base_level]}"
-  echo $_title
-  echo $author
-  echo "${revdate}:${revremark}"
-  echo
-}
-
 heading() {
   # inputs
   desired_level=$1
@@ -52,6 +43,64 @@ heading() {
   echo -n ${headings[$actual_level]}
   echo
   echo
+}
+
+show_header() {
+  # docinfo section
+  heading 0 "$(hostname)"
+  echo $_title
+  echo $author
+  echo "${revdate}:${revremark}"
+  echo
+
+  # introduction
+  heading 1 "Introduction"
+  cat << "EOF"
+This document was created with `lscfg` on a host machine.
+
+The `lscfg` command runs numerous checkpoints at `nice -n +19`
+to reduce impact on the host. It dumps 
+http://www.methods.co.nz/asciidoc[AsciiDoc]-formatted
+output to `stdout`, which can be redirected as desired.
+The underlying code for each checkpoint is provided in
+the last section of this document.
+
+The http://www.methods.co.nz[AsciiDoc] output can be copied 
+from the original host to another workstation
+and rendered in other formats.
+
+.Convert to HTML:
+----
+asciidoc -b html4 /tmp/lscfg.asciidoc
+----
+
+.Convert to PDF:
+----
+a2x -vv -f pdf /tmp/lscfg.asciidoc
+----
+
+AsciiDoc is written in Python and is available on many platforms.
+On Linux, the *asciidoc* package provides the `asciidoc` and `a2x` commands.
+
+EOF
+}
+
+show_checkpoints() {
+  # this creates an appendix as part of the document
+  heading 1 Checkpoints
+cat << "EOF"
+
+This section provides code listings for each checkpoint
+used to produce the output in other sections.
+
+EOF
+  for file in $(ls /usr/share/lscfg/*); do
+    _pretty_file=${file##*lscfg/}
+    heading 2 "Checkpoint: $_pretty_file"
+    echo "----"
+    cat $file
+    echo "----"
+  done
 }
 
 do_checkpoint() {

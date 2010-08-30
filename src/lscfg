@@ -63,11 +63,13 @@ case $1 in
     lscfg.network
     lscfg.services
     lscfg.disk
+	show_checkpoints
 	;;
 
       -n|--network)
 	show_header
    	lscfg.network
+	show_checkpoints
 	;;
 
       -h|--help)
@@ -77,11 +79,13 @@ case $1 in
       -b|--basic)
 	show_header
    	lscfg.basic
+	show_checkpoints
 	;;
 
       -d|--disk)
 	show_header
    	lscfg.disk
+	show_checkpoints
 	;;
 
       -v|--version)
@@ -91,6 +95,7 @@ case $1 in
       -w|--hardware)
 	show_header
    	lscfg.hardware 
+	show_checkpoints
 	;;
 
       *)
