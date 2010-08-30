@@ -15,6 +15,10 @@ fi
 
 heading 0 "Hardware information"
 
+echo
+echo "This section describes the host's hardware."
+echo
+
 heading 1 "CPU information"
 echo
 echo "NOTE: If hyperthreading is enabled, actual CPU"
@@ -60,6 +64,10 @@ EOF
 fi
 
 heading 1 "PCI devices"
+
+echo
+echo "This section describes devices on the PCI bus."
+echo
 
 heading 2 "RAID devices"
 do_checkpoint lspci RAID

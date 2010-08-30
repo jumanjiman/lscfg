@@ -15,7 +15,15 @@ fi
 
 heading 0 "Network configuration"
 
+echo
+echo "This section covers configured and actual network settings."
+echo
+
 heading 1 "System-wide settings"
+
+echo
+echo "These settings apply to the host regardless of interface."
+echo
 
 heading 2 "Global network configuration"
 do_checkpoint file /etc/sysconfig/network 
@@ -24,6 +32,10 @@ heading 2 "Default gateways"
 do_checkpoint default_gateway
 
 heading 2 "Name resolution"
+
+echo
+echo "This section describes how the host resolves names."
+echo
 
 heading 2 "Hostname databases"
 do_checkpoint nss-hosts
@@ -46,7 +58,7 @@ heading 2 "IP rules"
 do_checkpoint ip-rules
 
 heading 2 "ARP Cache"
-do_checkpoint arp_cache
+do_checkpoint arp-cache
 
 
 

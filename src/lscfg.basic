@@ -15,6 +15,10 @@ fi
 
 heading 0 "Basic information"
 
+echo
+echo "This section provides basic information about the host"
+echo
+
 echo -n 'Hostname is: '
 hostname
 echo
