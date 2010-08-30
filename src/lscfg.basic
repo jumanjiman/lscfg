@@ -13,14 +13,6 @@ fi
 
 . functions || exit 1
 
-#####################################################
-### feel free to mod this as necessary for your needs
-### comments & suggestions are welcome..
-### flaming is not encouraged...
-### email jbenedic@redhat.com
-#####################################################
-
-
 echo "== Basic information =="
 
 echo -n 'Hostname is: '

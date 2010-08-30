@@ -12,13 +12,6 @@ fi
 
 
 
-#####################################################
-### feel free to mod this as necessary for your needs
-### comments & suggestions are welcome..
-### flaming is not encouraged...
-### email jbenedic@redhat.com
-#####################################################
-
 . functions || exit 1
 
 heading 0 "Storage information"
