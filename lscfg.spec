@@ -37,10 +37,22 @@ a2x -d manpage -f manpage src/doc/lscfg.8.asciidoc
 
 %install
 %{__rm} -rf %{buildroot}
+
+# documentation
 %{__mkdir_p} %{buildroot}/%{_mandir}/man8
-%{__mkdir_p} %{buildroot}/%{_sbindir}
-%{__install} -m0755 src/lscfg %{buildroot}/%{_sbindir}
 %{__gzip} -c src/doc/lscfg.8 > %{buildroot}/%{_mandir}/man8/lscfg.8.gz
+
+# the main script
+%{__mkdir_p} %{buildroot}/%{_sbindir}
+%{__install} -p -m0755 src/lscfg %{buildroot}/%{_sbindir}
+
+# checkpoints
+%{__mkdir_p} %{buildroot}/%{_datadir}/%{name}
+%{__install} -p -m0755 src/checkpoints/* %{buildroot}/%{_datadir}/%{name}
+
+# configs
+%{__mkdir_p} %{buildroot}/%{_sysconfdir}/%{name}
+%{__install} -p -m0644 src/config/* %{buildroot}/%{_sysconfdir}/%{name}
 
 
 
@@ -52,8 +64,35 @@ a2x -d manpage -f manpage src/doc/lscfg.8.asciidoc
 %defattr(-,root,root,-)
 %doc %{_mandir}/man8/lscfg.8.gz
 %doc src/COPYING.GPLv2
+
+# main script
 %{_sbindir}/lscfg
 
+# configs
+%dir %{_sysconfdir}/%{name}
+%config %{_sysconfdir}/%{name}/lscfg.conf
+%config %{_sysconfdir}/%{name}/functions
+
+# checkpoints
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/arp-cache
+%{_datadir}/%{name}/cpu_count
+%{_datadir}/%{name}/cpu_type
+%{_datadir}/%{name}/default_gateway
+%{_datadir}/%{name}/disk_utilization
+%{_datadir}/%{name}/duplex
+%{_datadir}/%{name}/file
+%{_datadir}/%{name}/free_memory
+%{_datadir}/%{name}/ip-addr
+%{_datadir}/%{name}/ip-rules
+%{_datadir}/%{name}/ip-stats
+%{_datadir}/%{name}/lspci
+%{_datadir}/%{name}/mount
+%{_datadir}/%{name}/nss-hosts
+%{_datadir}/%{name}/numactl
+%{_datadir}/%{name}/panic
+%{_datadir}/%{name}/parted
+%{_datadir}/%{name}/service
 
 
 %changelog
