@@ -3,6 +3,7 @@
 ### This software may be freely redistributed under the terms of the GNU
 ### public license.
 
+# user may call via sudo
 program_directory="${0%/*}"
 if [ -n "$program_directory" ]; then
        PATH="$PATH:$program_directory"
@@ -42,22 +43,11 @@ EOF
 ### VARS ###
 ############
 
-### Date, Hostname, Kernel, Uptime
-version="1.2.0"
-crrntdate=`/bin/date`
-hstnm=`/bin/hostname`
-krn=`uname -a | awk '{print $3}'`
-rls=`cat /etc/redhat-release`
-up=`uptime|awk '{print $3 " "  $4 $5}'|sed s/,/" "/g`
-
-### networking vars
-HOST=`cat /etc/hosts|grep -v '#'`
-NET=`cat /etc/sysconfig/network`
-GAT=`netstat -rn | grep -iv kernel`
-ARP=`/sbin/arp -a`
+#GAT=`netstat -rn | grep -iv kernel`
+#ARP=`/sbin/arp -a`
 
 ### services
-SVC=`/sbin/chkconfig --list | grep on | awk '{print $1}'| pr -T --columns=3 -`
+#SVC=`/sbin/chkconfig --list | grep on | awk '{print $1}'| pr -T --columns=3 -`
 
 # source helper functions
 . functions
