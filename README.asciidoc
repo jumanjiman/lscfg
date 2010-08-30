@@ -1,40 +1,56 @@
-= sample.example.com =
-root <root@sample.example.com>
-2010 Aug 30 at 1322.22: ran lscfg
 
-== Sample output ==
 
-This document was created with `lscfg` on an actual server.
+= sample.prod.example.com =
 
-The http://www.methods.co.nz/asciidoc/index.html[AsciiDoc] output
-can be copied to another workstation and rendered in other formats.
 
-.Convert to HTML
+root
+2010 Aug 30 at 1717.47:ran lscfg -a
+
+
+
+== Introduction ==
+
+This document was created with `lscfg` on a host machine.
+
+The `lscfg` command runs numerous checkpoints at `nice -n +19`
+to reduce impact on the host. It dumps 
+http://www.methods.co.nz/asciidoc[AsciiDoc]-formatted
+output to `stdout`, which can be redirected as desired.
+The underlying code for each checkpoint is provided in
+the last section of this document.
+
+The http://www.methods.co.nz[AsciiDoc] output can be copied 
+from the original host to another workstation
+and rendered in other formats.
+
+.Convert to HTML:
 ----
 asciidoc -b html4 /tmp/lscfg.asciidoc
 ----
 
-.Convert to PDF
+.Convert to PDF:
 ----
 a2x -vv -f pdf /tmp/lscfg.asciidoc
 ----
 
+AsciiDoc is written in Python and is available on many platforms.
+On Linux, the *asciidoc* package provides the `asciidoc` and `a2x` commands.
+
+
+
 == Basic information ==
 
+Hostname is: `sample.prod.example.com`
 
-This section provides basic information about the host
+Current date stamp is: `Mon Aug 30 17:17:47 EDT 2010`
 
-Hostname is: sample.example.com
+Kernel release is: `2.6.24.7-139.el5rt`
 
-Current date stamp is: Mon Aug 30 12:43:20 EDT 2010
+OS release is: `Red Hat Enterprise Linux Server release 5.4 (Tikanga)`
 
-Kernel release is: 2.6.24.7-139.el5rt
+Uptime is: `3871454.53 seconds`
 
-OS release is: Red Hat Enterprise Linux Server release 5.4 (Tikanga)
-
-Uptime is: 3854987.49 seconds
-
-Default Run Level: 3
+Default Run Level: `3`
 
 
 
@@ -274,12 +290,12 @@ Checkpoint: free_memory
 
 ----
              total       used       free     shared    buffers     cached
-Mem:         48395      24088      24307          0        511      19738
-Low:         48395      24088      24307
+Mem:         48395      24327      24068          0        626      19864
+Low:         48395      24327      24068
 High:            0          0          0
--/+ buffers/cache:       3838      44557
+-/+ buffers/cache:       3836      44559
 Swap:          486          0        486
-Total:       48882      24088      24793
+Total:       48882      24327      24554
 
 ----
 
@@ -345,21 +361,21 @@ Checkpoint: file /sys/devices/system/node/node0/meminfo
 ----
 
 Node 0 MemTotal:     25155388 kB
-Node 0 MemFree:      14537244 kB
-Node 0 MemUsed:      10618144 kB
-Node 0 Active:         839684 kB
-Node 0 Inactive:      1487062 kB
-Node 0 Dirty:             376 kB
-Node 0 Writeback:           0 kB
-Node 0 FilePages:     8222868 kB
-Node 0 Mapped:          51816 kB
-Node 0 AnonPages:     1029960 kB
-Node 0 PageTables:       8352 kB
+Node 0 MemFree:      14367212 kB
+Node 0 MemUsed:      10788176 kB
+Node 0 Active:         873198 kB
+Node 0 Inactive:      1495999 kB
+Node 0 Dirty:            1532 kB
+Node 0 Writeback:          12 kB
+Node 0 FilePages:     8389324 kB
+Node 0 Mapped:          51552 kB
+Node 0 AnonPages:     1032864 kB
+Node 0 PageTables:       8644 kB
 Node 0 NFS_Unstable:        0 kB
 Node 0 Bounce:              0 kB
-Node 0 Slab:           718328 kB
-Node 0 SReclaimable:   618848 kB
-Node 0 SUnreclaim:      99480 kB
+Node 0 Slab:           718020 kB
+Node 0 SReclaimable:   618824 kB
+Node 0 SUnreclaim:      99196 kB
 Node 0 HugePages_Total:     0
 Node 0 HugePages_Free:      0
 
@@ -373,11 +389,11 @@ Node 0 HugePages_Free:      0
 Checkpoint: file /sys/devices/system/node/node0/numastat
 
 ----
-numa_hit 975575543
+numa_hit 978530804
 numa_miss 4898807
 numa_foreign 33249041
 interleave_hit 16945
-local_node 975557466
+local_node 978512727
 other_node 4916884
 
 ----
@@ -396,21 +412,21 @@ Checkpoint: file /sys/devices/system/node/node1/meminfo
 ----
 
 Node 1 MemTotal:     25165820 kB
-Node 1 MemFree:      10353140 kB
-Node 1 MemUsed:      14812680 kB
-Node 1 Active:         778431 kB
-Node 1 Inactive:      2596831 kB
-Node 1 Dirty:             332 kB
+Node 1 MemFree:      10278216 kB
+Node 1 MemUsed:      14887604 kB
+Node 1 Active:         793803 kB
+Node 1 Inactive:      2600634 kB
+Node 1 Dirty:             460 kB
 Node 1 Writeback:           0 kB
-Node 1 FilePages:    12513392 kB
+Node 1 FilePages:    12593340 kB
 Node 1 Mapped:          40240 kB
-Node 1 AnonPages:      973768 kB
-Node 1 PageTables:       8212 kB
+Node 1 AnonPages:      971392 kB
+Node 1 PageTables:       7368 kB
 Node 1 NFS_Unstable:        0 kB
 Node 1 Bounce:              0 kB
-Node 1 Slab:           876704 kB
-Node 1 SReclaimable:   785536 kB
-Node 1 SUnreclaim:      91168 kB
+Node 1 Slab:           876092 kB
+Node 1 SReclaimable:   785704 kB
+Node 1 SUnreclaim:      90388 kB
 Node 1 HugePages_Total:     0
 Node 1 HugePages_Free:      0
 
@@ -424,11 +440,11 @@ Node 1 HugePages_Free:      0
 Checkpoint: file /sys/devices/system/node/node1/numastat
 
 ----
-numa_hit 1232462245
+numa_hit 1241212568
 numa_miss 33249041
 numa_foreign 4898807
 interleave_hit 16936
-local_node 1232461655
+local_node 1241211978
 other_node 33249631
 
 ----
@@ -532,7 +548,7 @@ Checkpoint: file /etc/sysconfig/network
 ----
 NETWORKING=yes
 NETWORKING_IPV6=yes
-HOSTNAME=sample.example.com
+HOSTNAME=sample.prod.example.com
 NOZEROCONF=disabled
 GATEWAY=11.3.1.1
 
@@ -580,7 +596,7 @@ Checkpoint: file /etc/resolv.conf
 
 ----
 # also need access to satserver
-search example.com
+search prod.example.com inf.example.com mstest.example.com
 # 
 # prod site C
 nameserver 11.3.8.81
@@ -800,9 +816,9 @@ Checkpoint: ip-stats lo
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 16436 qdisc noqueue 
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     RX: bytes  packets  errors  dropped overrun mcast   
-    2264895354 50225387 0       0       0       0      
+    2272137483 50277902 0       0       0       0      
     TX: bytes  packets  errors  dropped carrier collsns 
-    2264895354 50225387 0       0       0       0      
+    2272137483 50277902 0       0       0       0      
 
 ----
 
@@ -852,9 +868,9 @@ Checkpoint: ip-stats eth0
 2: eth0: <BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master bond0 qlen 1000
     link/ether 00:25:b3:a7:68:f8 brd ff:ff:ff:ff:ff:ff
     RX: bytes  packets  errors  dropped overrun mcast   
-    2700389976 42110497 0       0       0       0      
+    2762553587 42526998 0       0       0       0      
     TX: bytes  packets  errors  dropped carrier collsns 
-    3178140112 21128417 0       0       0       0      
+    3572950926 21472987 0       0       0       0      
 
 ----
 
@@ -904,7 +920,7 @@ Checkpoint: ip-stats eth1
 3: eth1: <BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master bond0 qlen 1000
     link/ether 00:25:b3:a7:68:f8 brd ff:ff:ff:ff:ff:ff
     RX: bytes  packets  errors  dropped overrun mcast   
-    1378804949 21160460 0       0       0       0      
+    1390154491 21335960 0       0       0       0      
     TX: bytes  packets  errors  dropped carrier collsns 
     0          0        0       0       0       0      
 
@@ -942,7 +958,7 @@ Checkpoint: ip-stats ib0
 4: ib0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 2044 qdisc pfifo_fast qlen 256
     link/infiniband 80:00:00:48:fe:80:00:00:00:00:00:00:00:02:c9:03:00:07:22:d9 brd 00:ff:ff:ff:ff:12:40:1b:ff:ff:00:00:00:00:00:00:ff:ff:ff:ff
     RX: bytes  packets  errors  dropped overrun mcast   
-    80045636   318944206 0       0       0       0      
+    80050916   318944316 0       0       0       0      
     TX: bytes  packets  errors  dropped carrier collsns 
     71920478   88674226 0       142565880 0       0      
 
@@ -980,9 +996,9 @@ Checkpoint: ip-stats ib1
 5: ib1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 2044 qdisc pfifo_fast qlen 256
     link/infiniband 80:00:00:49:fe:80:00:00:00:00:00:00:00:02:c9:03:00:07:22:da brd 00:ff:ff:ff:ff:12:40:1b:ff:ff:00:00:00:00:00:00:ff:ff:ff:ff
     RX: bytes  packets  errors  dropped overrun mcast   
-    3482555767 167372917 0       0       0       0      
+    3505296965 167564943 0       0       0       0      
     TX: bytes  packets  errors  dropped carrier collsns 
-    3582929967 79686183 0       146894804 0       0      
+    3608828583 79878827 0       146894804 0       0      
 
 ----
 
@@ -1018,9 +1034,9 @@ Checkpoint: ip-stats bond0
 6: bond0: <BROADCAST,MULTICAST,MASTER,UP,LOWER_UP> mtu 1500 qdisc noqueue 
     link/ether 00:25:b3:a7:68:f8 brd ff:ff:ff:ff:ff:ff
     RX: bytes  packets  errors  dropped overrun mcast   
-    4079194925 63270957 0       0       0       0      
+    4152708078 63862958 0       0       0       0      
     TX: bytes  packets  errors  dropped carrier collsns 
-    3178140112 21128417 0       0       0       0      
+    3572950926 21472987 0       0       0       0      
 
 ----
 
@@ -1693,21 +1709,21 @@ currently mounted on the host.
 Checkpoint: mount
 
 ----
-/dev/mapper/vg-sample.example.com-sys on / type ext3 (rw)
+/dev/mapper/vg-sample.prod.example.com-sys on / type ext3 (rw)
 proc on /proc type proc (rw)
 sysfs on /sys type sysfs (rw)
 devpts on /dev/pts type devpts (rw,gid=5,mode=620)
 /dev/cciss/c0d0p5 on /opt/gts type ext3 (rw)
-/dev/mapper/vg-sample.example.com-tmp on /tmp type ext3 (rw)
-/dev/mapper/vg-sample.example.com-home on /home type ext3 (rw)
-/dev/mapper/vg-sample.example.com-usr on /usr type ext3 (rw)
+/dev/mapper/vg-sample.prod.example.com-tmp on /tmp type ext3 (rw)
+/dev/mapper/vg-sample.prod.example.com-home on /home type ext3 (rw)
+/dev/mapper/vg-sample.prod.example.com-usr on /usr type ext3 (rw)
 /dev/cciss/c0d0p6 on /var/log/sa type ext3 (rw)
 /dev/cciss/c0d0p1 on /boot type ext3 (rw)
 tmpfs on /dev/shm type tmpfs (rw)
 none on /proc/sys/fs/binfmt_misc type binfmt_misc (rw)
 sunrpc on /var/lib/nfs/rpc_pipefs type rpc_pipefs (rw)
 ic-nfs01.inf.example.com:/exports/home on /home type nfs (rw,soft,intr,addr=6.3.3.56)
-/dev/mapper/vg-sample.example.com-perfdata on /usr/local/perfcap/data type ext3 (rw)
+/dev/mapper/vg-sample.prod.example.com-perfdata on /usr/local/perfcap/data type ext3 (rw)
 /dev on /opt/gts/envs/001/dev type none (rw,bind)
 /usr on /opt/gts/envs/001/usr type none (rw,bind)
 /var on /opt/gts/envs/001/var type none (rw,bind)
@@ -1748,18 +1764,166 @@ Checkpoint: disk_utilization
 
 ----
 Filesystem            Size  Used Avail Use% Mounted on
-/dev/mapper/vg-sample.example.com-sys  3.9G  794M  2.9G  22% /
+/dev/mapper/vg-sample.prod.example.com-sys  3.9G  796M  2.9G  22% /
 /dev/cciss/c0d0p5      74G   17G   53G  24% /opt/gts
-/dev/mapper/vg-sample.example.com-tmp  3.9G  137M  3.6G   4% /tmp
-/dev/mapper/vg-sample.example.com-home  497G   74G  398G  16% /home
-/dev/mapper/vg-sample.example.com-usr  3.9G  1.8G  2.0G  48% /usr
-/dev/cciss/c0d0p6     9.3G  4.8G  4.1G  54% /var/log/sa
+/dev/mapper/vg-sample.prod.example.com-tmp  3.9G  137M  3.6G   4% /tmp
+/dev/mapper/vg-sample.prod.example.com-home  497G   74G  398G  16% /home
+/dev/mapper/vg-sample.prod.example.com-usr  3.9G  1.8G  2.0G  48% /usr
+/dev/cciss/c0d0p6     9.3G  4.9G  4.0G  56% /var/log/sa
 /dev/cciss/c0d0p1     101M   19M   77M  20% /boot
 tmpfs                  24G     0   24G   0% /dev/shm
 ic-nfs01.inf.example.com:/exports/home  497G   74G  398G  16% /home
-/dev/mapper/vg-sample.example.com-perfdata 1008M   88M  869M  10% /usr/local/perfcap/data
+/dev/mapper/vg-sample.prod.example.com-perfdata 1008M  108M  849M  12% /usr/local/perfcap/data
 tmpfs                  24G     0   24G   0% /opt/gts/envs/001/dev/shm
 tmpfs                  24G     0   24G   0% /opt/gts/envs/002/dev/shm
 
 ----
 
+
+
+== Checkpoints ==
+
+
+This section provides code listings for each checkpoint
+used to produce the output in other sections.
+
+
+
+=== Checkpoint: arp-cache ===
+
+----
+/sbin/ip neighbor show
+----
+
+
+=== Checkpoint: cpu_count ===
+
+----
+egrep -ic '^processor.*:' /proc/cpuinfo
+----
+
+
+=== Checkpoint: cpu_type ===
+
+----
+awk -F: '$1~/model/ && $2~/[[:alpha:]]/{print $2}' /proc/cpuinfo | sed 's/^ //'
+----
+
+
+=== Checkpoint: default_gateway ===
+
+----
+/sbin/ip route show table all | grep default
+----
+
+
+=== Checkpoint: disk_utilization ===
+
+----
+/bin/df -Ph
+----
+
+
+=== Checkpoint: duplex ===
+
+----
+if [ -x /sbin/ethtool ]; then
+  /sbin/ethtool $2 2>&1
+else
+  /sbin/mii-tool 2>&1
+fi
+----
+
+
+=== Checkpoint: file ===
+
+----
+cat $2
+----
+
+
+=== Checkpoint: free_memory ===
+
+----
+/usr/bin/free -ltm
+----
+
+
+=== Checkpoint: ip-addr ===
+
+----
+/sbin/ip address show $2
+----
+
+
+=== Checkpoint: ip-rules ===
+
+----
+/sbin/ip rule show
+----
+
+
+=== Checkpoint: ip-stats ===
+
+----
+/sbin/ip -s link show $2
+----
+
+
+=== Checkpoint: lspci ===
+
+----
+/sbin/lspci | egrep $2 || echo "No $2 devices"
+----
+
+
+=== Checkpoint: mount ===
+
+----
+/bin/mount
+----
+
+
+=== Checkpoint: nss-hosts ===
+
+----
+grep '^hosts:' /etc/nsswitch.conf
+----
+
+
+=== Checkpoint: numactl ===
+
+----
+/usr/bin/numactl --show
+----
+
+
+=== Checkpoint: panic ===
+
+----
+_msgs=$(/bin/dmesg -n 1)
+[[ -z $_msgs ]] && _msgs="No kernel panic messages found."
+echo $_msgs
+----
+
+
+=== Checkpoint: parted ===
+
+----
+for node in $(tail -n +3 /proc/partitions | awk '{print $NF}'); do
+  _output=$(parted -s /dev/$node unit s print 2>&1)
+  [ $? -eq 0 ] && echo -e "${_output}\n"
+done
+----
+
+
+=== Checkpoint: service ===
+
+----
+#/sbin/service $2 status
+# /sbin/service clears environment, which has the
+# side-effect of ignoring preset env vars, such as CONSOLETYPE.
+# This is an unwelcome surprise which would otherwise force
+# you to change /etc/sysconfig/init
+CONSOLETYPE=serial /etc/init.d/$2 status
+----
