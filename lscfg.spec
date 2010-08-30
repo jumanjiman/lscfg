@@ -45,6 +45,12 @@ a2x -d manpage -f manpage src/doc/lscfg.8.asciidoc
 # the main script
 %{__mkdir_p} %{buildroot}/%{_sbindir}
 %{__install} -p -m0755 src/lscfg %{buildroot}/%{_sbindir}
+%{__install} -p -m0755 src/lscfg.basic %{buildroot}/%{_sbindir}
+%{__install} -p -m0755 src/lscfg.disk %{buildroot}/%{_sbindir}
+%{__install} -p -m0755 src/lscfg.hardware %{buildroot}/%{_sbindir}
+%{__install} -p -m0755 src/lscfg.kernel %{buildroot}/%{_sbindir}
+%{__install} -p -m0755 src/lscfg.network %{buildroot}/%{_sbindir}
+%{__install} -p -m0755 src/lscfg.services %{buildroot}/%{_sbindir}
 
 # checkpoints
 %{__mkdir_p} %{buildroot}/%{_datadir}/%{name}
@@ -67,6 +73,12 @@ a2x -d manpage -f manpage src/doc/lscfg.8.asciidoc
 
 # main script
 %{_sbindir}/lscfg
+%{_sbindir}/lscfg.basic
+%{_sbindir}/lscfg.disk
+%{_sbindir}/lscfg.hardware
+%{_sbindir}/lscfg.kernel
+%{_sbindir}/lscfg.network
+%{_sbindir}/lscfg.services
 
 # configs
 %dir %{_sysconfdir}/%{name}
