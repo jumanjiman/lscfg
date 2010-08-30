@@ -23,7 +23,7 @@ default_runlevel() {
 }
 
 # one-dimensional array with asciidoc heading markers
-declare -a headings=("=" "==" "===" "====" "=====")
+headings=("=" "==" "===" "====" "=====")
 
 # 0 for book
 base_level=0
@@ -37,6 +37,7 @@ revremark="ran lscfg -a"
 # revdate must not contain a ":"
 revdate="$(date +'%Y %b %d at %H%M.%S')"
 
+checkpoints_dir=checkpoints
 
 show_header() {
   # begin a document
@@ -72,7 +73,6 @@ heading() {
   echo
 }
 
-checkpoints_dir=checkpoints
 do_checkpoint() {
   _file=$checkpoints_dir/$1
   [[ -r $_file ]] || return 1
