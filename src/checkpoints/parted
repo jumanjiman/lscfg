@@ -1,4 +1,4 @@
 for node in $(tail -n +3 /proc/partitions | awk '{print $NF}'); do
   _output=$(parted -s /dev/$node unit s print 2>&1)
-  [ $? -eq 0 ] && echo -e "${_output}\n"
+  [ $? -eq 0 ] && echo -e "${_output}\n" || :
 done
