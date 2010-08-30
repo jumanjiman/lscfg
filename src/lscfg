@@ -72,13 +72,6 @@ NET=`cat /etc/sysconfig/network`
 GAT=`netstat -rn | grep -iv kernel`
 ARP=`/sbin/arp -a`
 
-### panic ??
-DM=`dmesg -n 1`
-if [ -n $DM ]; then
-    DM="No kernel panic messages found..."
-    else
-    DM=`dmesg -n 1`
-fi
 ### services
 SVC=`/sbin/chkconfig --list | grep on | awk '{print $1}'| pr -T --columns=3 -`
 
@@ -90,7 +83,7 @@ case $1 in
       -a|'')
     lscfg.basic
     hardware
-    panic
+    lscfg.kernel
     lscfg.network
     lscfg.services
     lscfg.disk

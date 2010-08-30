@@ -92,18 +92,6 @@ do_checkpoint() {
 }
 
 
-panic () {
-
-cat <<EOF
-
-+==========================+
-|| :: DMESG Panic Info :: ||
-+==========================+
-
- $DM
-EOF
-}
-
 hardware () {
 
 cat <<EOF

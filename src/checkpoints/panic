@@ -1,0 +1,3 @@
+_msgs=$(/bin/dmesg -n 1)
+[[ -z $_msgs ]] && _msgs="No kernel panic messages found."
+echo $_msgs
