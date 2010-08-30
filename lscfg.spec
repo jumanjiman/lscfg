@@ -1,6 +1,6 @@
 Name:		lscfg
 Version:	1.3.0
-Release:	0%{?dist}
+Release:	1%{?dist}
 Summary:	details the basic configuration of a Linux system
 
 Group:		Applications/System
@@ -96,6 +96,19 @@ a2x -d manpage -f manpage src/doc/lscfg.8.asciidoc
 
 
 %changelog
+* Mon Aug 30 2010 Paul Morgan <jumanjiman@gmail.com> 1.3.0-1
+- version bump
+- output in asciidoc for conversion to other formats
+- fix up path for sudo invocation
+- modular checkpoints in /usr/share/lscfg
+- do checkpoints at nice +19
+- moved variables into config file
+- use parted instead of fdisk
+- add numa checkpoints
+- new net checkpoints
+- remove release from script version
+- GPLv2 is now in LICENSE instead of COPYING.GPLv2
+
 * Sun Aug 29 2010 Paul Morgan <jumanjiman@gmail.com> 1.2.0-3
 - use asciidoc to generate manpage
 
