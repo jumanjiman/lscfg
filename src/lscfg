@@ -52,11 +52,11 @@ EOF
 # source helper functions
 . /etc/lscfg/functions || exit 1
 
-show_header
 
 case $1 in
    
       -a|'')
+	show_header
     lscfg.basic
     lscfg.hardware
     lscfg.kernel
@@ -66,6 +66,7 @@ case $1 in
 	;;
 
       -n|--network)
+	show_header
    	lscfg.network
 	;;
 
@@ -74,10 +75,12 @@ case $1 in
 	;;
 
       -b|--basic)
+	show_header
    	lscfg.basic
 	;;
 
       -d|--disk)
+	show_header
    	lscfg.disk
 	;;
 
@@ -86,6 +89,7 @@ case $1 in
 	;;
 
       -w|--hardware)
+	show_header
    	lscfg.hardware 
 	;;
 
