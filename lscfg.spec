@@ -63,7 +63,7 @@ a2x -d manpage -f manpage src/doc/lscfg.8.asciidoc
 %files
 %defattr(-,root,root,-)
 %doc %{_mandir}/man8/lscfg.8.gz
-%doc src/COPYING.GPLv2
+%doc LICENSE
 
 # main script
 %{_sbindir}/lscfg
