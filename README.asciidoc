@@ -2,6 +2,23 @@
 root <root@sample.example.com>
 2010 Aug 30 at 1322.22: ran lscfg
 
+== Sample output ==
+
+This document was created with `lscfg` on an actual server.
+
+The http://www.methods.co.nz/asciidoc/index.html[AsciiDoc] output
+can be copied to another workstation and rendered in other formats.
+
+.Convert to HTML
+----
+asciidoc -b html4 /tmp/lscfg.asciidoc
+----
+
+.Convert to PDF
+----
+a2x -vv -f pdf /tmp/lscfg.asciidoc
+----
+
 == Basic information ==
 
 
