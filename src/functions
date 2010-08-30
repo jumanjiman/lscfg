@@ -89,6 +89,7 @@ do_checkpoint() {
   if [ $_rc -ne 0 ]; then
     echo "WARNING: The checkpoint exit status was $_rc"
   fi
+  return $_rc
 }
 
 
