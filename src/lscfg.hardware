@@ -35,7 +35,13 @@ heading 1 "NUMA information"
 heading 2 "NUMA overview"
 do_checkpoint numactl
 
+/usr/bin/numactl --show 2>&1 | grep 'No NUMA support' &> /dev/null
 if [ $? -eq 0 ]; then
+  echo
+  echo "NOTE: NUMA is disabled or unsupported on this host;"
+  echo "skipping other NUMA checkpoints."
+  echo
+else
   echo
   echo "This section enumerates NUMA nodes with:"
   echo 
