@@ -61,10 +61,11 @@ EOF
 
   # numa details in one section per node
   for _node in $_nodes; do
-    heading 2 "NUMA $_node"
-    heading 3 "$_node memory"
+    _base_node=${_node##*node/}
+    heading 2 "$_base_node information"
+    heading 3 "$_base_node memory"
     do_checkpoint file ${_node}/meminfo
-    heading 3 "$_node statistics"
+    heading 3 "$_base_node statistics"
     do_checkpoint file ${_node}/numastat
   done
 fi
