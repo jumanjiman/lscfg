@@ -6,14 +6,9 @@
 # user may call lscfg via sudo
 export PATH="${PATH}:/sbin"
 
-
-#####################################################
-### feel free to mod this as necessary for your needs
-### comments & suggestions are welcome..
-### flaming is not encouraged...
-### email jbenedic@redhat.com
-#####################################################
-
+# read config
+config=/etc/lscfg/lscfg.conf
+[ -r $config ] && . $config || exit 1
 
 ### functions
 
@@ -24,20 +19,6 @@ default_runlevel() {
 
 # one-dimensional array with asciidoc heading markers
 headings=("=" "==" "===" "====" "=====")
-
-# 0 for book
-base_level=0
-
-# 1 for chapter (as part of a book) or article
-#base_level=1
-
-author="root"
-authorinitials="root"
-revremark="ran lscfg -a"
-# revdate must not contain a ":"
-revdate="$(date +'%Y %b %d at %H%M.%S')"
-
-checkpoints_dir=checkpoints
 
 show_header() {
   # begin a document
