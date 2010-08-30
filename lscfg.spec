@@ -1,6 +1,6 @@
 Name:		lscfg
-Version:	1.2.0
-Release:	3%{?dist}
+Version:	1.3.0
+Release:	0%{?dist}
 Summary:	details the basic configuration of a Linux system
 
 Group:		Applications/System
