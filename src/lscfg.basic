@@ -11,7 +11,7 @@ if [ -n "$program_directory" ]; then
 fi
 
 
-. functions || exit 1
+. /etc/lscfg/functions || exit 1
 
 heading 1 "Basic information"
 

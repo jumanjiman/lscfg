@@ -10,7 +10,7 @@ if [ -n "$program_directory" ]; then
        export PATH
 fi
 
-. functions || exit 1
+. /etc/lscfg/functions || exit 1
 
 heading 1 "Services information"
 

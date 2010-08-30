@@ -50,7 +50,7 @@ EOF
 #SVC=`/sbin/chkconfig --list | grep on | awk '{print $1}'| pr -T --columns=3 -`
 
 # source helper functions
-. functions
+. /etc/lscfg/functions || exit 1
 
 show_header
 
