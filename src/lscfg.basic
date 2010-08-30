@@ -15,31 +15,33 @@ fi
 
 heading 1 "Basic information"
 
-echo
-echo "This section provides basic information about the host"
-echo
-
-echo -n 'Hostname is: '
-hostname
+echo -n 'Hostname is: `'
+hostname | tr -d '\n'
+echo '`'
 echo
 
-echo -n 'Current date stamp is: '
-date
+echo -n 'Current date stamp is: `'
+date | tr -d '\n'
+echo '`'
 echo
 
-echo -n 'Kernel release is: '
-uname -a | awk '{print $3}'
+echo -n 'Kernel release is: `'
+uname -a | awk '{print $3}' | tr -d '\n'
+echo '`'
 echo
 
-echo -n 'OS release is: '
-cat /etc/redhat-release
+echo -n 'OS release is: `'
+cat /etc/redhat-release | tr -d '\n'
+echo '`'
 echo
 
-echo -n 'Uptime is: '
-awk '{print $1 " seconds"}' /proc/uptime
+echo -n 'Uptime is: `'
+awk '{print $1 " seconds"}' /proc/uptime | tr -d '\n'
+echo '`'
 echo
 
-echo -n 'Default Run Level: '
-default_runlevel
+echo -n 'Default Run Level: `'
+default_runlevel | tr -d '\n'
+echo '`'
 echo
 
