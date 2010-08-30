@@ -563,7 +563,7 @@ Checkpoint: file /etc/resolv.conf
 
 ----
 # also need access to satserver
-search example.com inf.ise.com mstest.iseoptions.com
+search example.com
 # 
 # prod site C
 nameserver 11.3.8.81
@@ -1689,7 +1689,7 @@ devpts on /dev/pts type devpts (rw,gid=5,mode=620)
 tmpfs on /dev/shm type tmpfs (rw)
 none on /proc/sys/fs/binfmt_misc type binfmt_misc (rw)
 sunrpc on /var/lib/nfs/rpc_pipefs type rpc_pipefs (rw)
-ic-nfs01.inf.ise.com:/exports/home on /home type nfs (rw,soft,intr,addr=6.3.3.56)
+ic-nfs01.inf.example.com:/exports/home on /home type nfs (rw,soft,intr,addr=6.3.3.56)
 /dev/mapper/vg-sample.example.com-perfdata on /usr/local/perfcap/data type ext3 (rw)
 /dev on /opt/gts/envs/001/dev type none (rw,bind)
 /usr on /opt/gts/envs/001/usr type none (rw,bind)
@@ -1739,7 +1739,7 @@ Filesystem            Size  Used Avail Use% Mounted on
 /dev/cciss/c0d0p6     9.3G  4.8G  4.1G  54% /var/log/sa
 /dev/cciss/c0d0p1     101M   19M   77M  20% /boot
 tmpfs                  24G     0   24G   0% /dev/shm
-ic-nfs01.inf.ise.com:/exports/home  497G   74G  398G  16% /home
+ic-nfs01.inf.example.com:/exports/home  497G   74G  398G  16% /home
 /dev/mapper/vg-sample.example.com-perfdata 1008M   88M  869M  10% /usr/local/perfcap/data
 tmpfs                  24G     0   24G   0% /opt/gts/envs/001/dev/shm
 tmpfs                  24G     0   24G   0% /opt/gts/envs/002/dev/shm
