@@ -27,6 +27,38 @@ do_checkpoint file /proc/cpuinfo
 heading 1 "Memory information"
 do_checkpoint free_memory
 
+heading 1 "NUMA information"
+heading 2 "NUMA overview"
+do_checkpoint numactl
+
+if [ $? -eq 0 ]; then
+  echo
+  echo "This section enumerates NUMA nodes with:"
+  echo 
+  echo "----"
+  cat << EOF
+find /sys/devices/system/ -regextype posix-egrep -type d -regex '.*node[[:digit:]]+'
+EOF
+  echo "----"
+  echo 
+  _nodes="$(find /sys/devices/system/ -regextype posix-egrep -type d -regex '.*node[[:digit:]]+')"
+
+  # put numa distances together
+  heading 2 "NUMA distance"
+  for _node in $_nodes; do
+    do_checkpoint file ${_node}/distance
+  done
+
+  # numa details in one section per node
+  for _node in $_nodes; do
+    heading 2 "NUMA $_node"
+    heading 3 "$_node memory"
+    do_checkpoint file ${_node}/meminfo
+    heading 3 "$_node statistics"
+    do_checkpoint file ${_node}/numastat
+  done
+fi
+
 heading 1 "PCI devices"
 
 heading 2 "RAID devices"
