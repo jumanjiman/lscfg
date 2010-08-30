@@ -1,1 +1,6 @@
-/sbin/service $2 status
+#/sbin/service $2 status
+# /sbin/service clears environment, which has the
+# side-effect of ignoring preset env vars, such as CONSOLETYPE.
+# This is an unwelcome surprise which would otherwise force
+# you to change /etc/sysconfig/init
+CONSOLETYPE=serial /etc/init.d/$2 status
