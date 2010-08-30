@@ -1,0 +1,42 @@
+#!/bin/bash
+
+### This software may be freely redistributed under the terms of the GNU
+### public license.
+
+# user may call lscfg via sudo
+program_directory="${0%/*}"
+if [ -n "$program_directory" ]; then
+       PATH="$PATH:$program_directory"
+       export PATH
+fi
+
+. functions || exit 1
+
+
+heading 0 "Hardware information"
+
+heading 1 "CPU information"
+echo
+echo "NOTE: If hyperthreading is enabled, actual CPU"
+echo "count will be half the number displayed below."
+echo
+do_checkpoint cpu_count
+do_checkpoint cpu_type
+do_checkpoint file /proc/cpuinfo
+
+heading 1 "Memory information"
+do_checkpoint free_memory
+
+heading 1 "PCI devices"
+
+heading 2 "RAID devices"
+do_checkpoint lspci RAID
+
+heading 2 "SCSI devices"
+do_checkpoint lspci SCSI
+
+heading 2 "Ethernet devices"
+do_checkpoint lspci Ethernet
+
+heading 2 "VGA devices"
+do_checkpoint lspci VGA

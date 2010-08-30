@@ -92,32 +92,6 @@ do_checkpoint() {
 }
 
 
-hardware () {
-
-cat <<EOF
-
-+===================================+
-|| :: CPU, MEMORY, AND PCI INFO :: ||
-+===================================+
-
-( CPU # may be skewed if hyperthreading is enabled...)
-( If hyperthreading is enabled, divide the # below by 2...)
-
- CPU Type               : $CTYP
- # of CPU               : $CNUM
-
- Memory Total           :
-
-$mem
-
- PCI devices
-	                : $S SCSI dev(s) (counted separately from RAID device)
-			: $R RAID dev(s)
-                        : $E Ethernet dev(s)
-                        : $V VGA dev(s)
-EOF
-}
-
 services () {
 
 cat << EOF
