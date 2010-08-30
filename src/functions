@@ -78,7 +78,7 @@ do_checkpoint() {
   fi
   echo
   echo "----"
-  bash $_cmd
+  nice -n +19 bash $_cmd
   _rc=$?
   # guarantee a non-empty code block
   echo 
