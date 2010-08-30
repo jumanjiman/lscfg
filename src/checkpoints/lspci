@@ -1,1 +1,1 @@
-/sbin/lspci | egrep $2
+/sbin/lspci | egrep $2 || echo "No $2 devices"
