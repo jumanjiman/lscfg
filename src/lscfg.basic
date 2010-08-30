@@ -13,7 +13,7 @@ fi
 
 . functions || exit 1
 
-echo "== Basic information =="
+heading 0 "Basic information"
 
 echo -n 'Hostname is: '
 hostname
