@@ -13,11 +13,11 @@ fi
 . functions || exit 1
 
 
-heading 0 "Kernel information"
+heading 1 "Kernel information"
 
 echo
 echo "This section includes information related to the kernel."
 echo
 
-heading 1 "Kernel panic"
+heading 2 "Kernel panic"
 do_checkpoint panic

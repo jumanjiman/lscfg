@@ -12,13 +12,13 @@ fi
 
 . functions || exit 1
 
-heading 0 "Services information"
+heading 1 "Services information"
 
 echo
 echo "This section covers system daemons."
 echo
 
-heading 1 "Boot-time services"
+heading 2 "Boot-time services"
 
 _dr=$(default_runlevel)
 boot_services="$(/sbin/chkconfig --list | awk "/$_dr:on/{print \$1}")"
@@ -29,7 +29,7 @@ if [[ -z $boot_services ]]; then
   echo
 else
   for svc in $boot_services; do
-    heading 2 "Service: $svc"
+    heading 3 "Service: $svc"
     do_checkpoint service $svc
   done
 fi

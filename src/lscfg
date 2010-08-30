@@ -52,6 +52,8 @@ EOF
 # source helper functions
 . functions
 
+show_header
+
 case $1 in
    
       -a|'')

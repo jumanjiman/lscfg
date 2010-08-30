@@ -13,13 +13,13 @@ fi
 . functions || exit 1
 
 
-heading 0 "Hardware information"
+heading 1 "Hardware information"
 
 echo
 echo "This section describes the host's hardware."
 echo
 
-heading 1 "CPU information"
+heading 2 "CPU information"
 echo
 echo "NOTE: If hyperthreading is enabled, actual CPU"
 echo "count will be half the number displayed below."
@@ -28,11 +28,11 @@ do_checkpoint cpu_count
 do_checkpoint cpu_type
 do_checkpoint file /proc/cpuinfo
 
-heading 1 "Memory information"
+heading 2 "Memory information"
 do_checkpoint free_memory
 
-heading 1 "NUMA information"
-heading 2 "NUMA overview"
+heading 2 "NUMA information"
+heading 3 "NUMA overview"
 do_checkpoint numactl
 
 /usr/bin/numactl --show 2>&1 | grep 'No NUMA support' &> /dev/null
@@ -54,7 +54,7 @@ EOF
   _nodes="$(find /sys/devices/system/ -regextype posix-egrep -type d -regex '.*node[[:digit:]]+')"
 
   # put numa distances together
-  heading 2 "NUMA distance"
+  heading 3 "NUMA distance"
   for _node in $_nodes; do
     do_checkpoint file ${_node}/distance
   done
@@ -62,28 +62,28 @@ EOF
   # numa details in one section per node
   for _node in $_nodes; do
     _base_node=${_node##*node/}
-    heading 2 "$_base_node information"
-    heading 3 "$_base_node memory"
+    heading 3 "$_base_node information"
+    heading 4 "$_base_node memory"
     do_checkpoint file ${_node}/meminfo
-    heading 3 "$_base_node statistics"
+    heading 4 "$_base_node statistics"
     do_checkpoint file ${_node}/numastat
   done
 fi
 
-heading 1 "PCI devices"
+heading 2 "PCI devices"
 
 echo
 echo "This section describes devices on the PCI bus."
 echo
 
-heading 2 "RAID devices"
+heading 3 "RAID devices"
 do_checkpoint lspci RAID
 
-heading 2 "SCSI devices"
+heading 3 "SCSI devices"
 do_checkpoint lspci SCSI
 
-heading 2 "Ethernet devices"
+heading 3 "Ethernet devices"
 do_checkpoint lspci Ethernet
 
-heading 2 "VGA devices"
+heading 3 "VGA devices"
 do_checkpoint lspci VGA

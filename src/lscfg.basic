@@ -13,7 +13,7 @@ fi
 
 . functions || exit 1
 
-heading 0 "Basic information"
+heading 1 "Basic information"
 
 echo
 echo "This section provides basic information about the host"

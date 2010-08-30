@@ -14,25 +14,25 @@ fi
 
 . functions || exit 1
 
-heading 0 "Storage information"
+heading 1 "Storage information"
 
 echo
 echo "This section describes the block devices available to the host."
 echo
 
-heading 1 "Block devices"
+heading 2 "Block devices"
 do_checkpoint parted
 
 
-heading 1 "Filesystems"
+heading 2 "Filesystems"
 
 echo
 echo "This section describes the character-based filesystems"
 echo "currently mounted on the host."
 echo
 
-heading 2 "Mounted filesystems"
+heading 3 "Mounted filesystems"
 do_checkpoint mount
 
-heading 2 "Filesystem utilization"
+heading 3 "Filesystem utilization"
 do_checkpoint disk_utilization
