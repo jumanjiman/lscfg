@@ -1,70 +1,1748 @@
-lscfg(8)
-========
+= sample.example.com =
+root <root@sample.example.com>
+2010 Aug 30 at 1322.22: ran lscfg
+
+== Basic information ==
 
 
-NAME
+This section provides basic information about the host
+
+Hostname is: sample.example.com
+
+Current date stamp is: Mon Aug 30 12:43:20 EDT 2010
+
+Kernel release is: 2.6.24.7-139.el5rt
+
+OS release is: Red Hat Enterprise Linux Server release 5.4 (Tikanga)
+
+Uptime is: 3854987.49 seconds
+
+Default Run Level: 3
+
+
+
+== Hardware information ==
+
+
+This section describes the host's hardware.
+
+
+
+=== CPU information ===
+
+
+NOTE: If hyperthreading is enabled, actual CPU
+count will be half the number displayed below.
+
+
+Checkpoint: cpu_count
+
 ----
-lscfg - list configuration
+8
 
-
-SYNOPSIS
---------
-'lscfg' [OPTIONS] 
-
-
-DESCRIPTION 
------------
-A bash script that details the basic configuration of 
-the system it is run against.
-
-
-OPTIONS
--------
-The options are mutually exclusive.
-
--a, --all::
-	List all available information
-
--n, --network::
-	List only network information
-
--h, --help::
-	List usage
-
--b, --basic::
-	List only the most basic information
-
--d, --disk::
-	List only disk related information
-
--v, --version::
-	Print the version
-
--w, --hardware::
-	List only hardware related information
-
-
-
-ENVIRONMENT
------------
-You need to be root to run this command
-
-
-COPYRIGHT
----------
-This is free software.
-You may redistribute copies of it under the terms
-of the GNU General Public License
-http://www.gnu.org/licenses/gpl.html .
-
-There is NO WARRANTY, to the extent permitted by law.
-
-
-BUGS
 ----
-duh.
 
 
-AUTHOR
-------
-jb
+Checkpoint: cpu_type
+
+----
+Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+
+----
+
+
+Checkpoint: file /proc/cpuinfo
+
+----
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 26
+model name	: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+stepping	: 5
+cpu MHz		: 2933.438
+cache size	: 8192 KB
+physical id	: 1
+siblings	: 4
+core id		: 0
+cpu cores	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good reliable_tsc nonstop_tsc pni monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr dca sse4_1 sse4_2 popcnt lahf_lm ida
+bogomips	: 5870.18
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 26
+model name	: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+stepping	: 5
+cpu MHz		: 2933.438
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good reliable_tsc nonstop_tsc pni monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr dca sse4_1 sse4_2 popcnt lahf_lm ida
+bogomips	: 5865.84
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 26
+model name	: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+stepping	: 5
+cpu MHz		: 2933.438
+cache size	: 8192 KB
+physical id	: 1
+siblings	: 4
+core id		: 2
+cpu cores	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good reliable_tsc nonstop_tsc pni monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr dca sse4_1 sse4_2 popcnt lahf_lm ida
+bogomips	: 5865.82
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 26
+model name	: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+stepping	: 5
+cpu MHz		: 2933.438
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 4
+core id		: 2
+cpu cores	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good reliable_tsc nonstop_tsc pni monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr dca sse4_1 sse4_2 popcnt lahf_lm ida
+bogomips	: 5865.83
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management:
+
+processor	: 4
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 26
+model name	: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+stepping	: 5
+cpu MHz		: 2933.438
+cache size	: 8192 KB
+physical id	: 1
+siblings	: 4
+core id		: 1
+cpu cores	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good reliable_tsc nonstop_tsc pni monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr dca sse4_1 sse4_2 popcnt lahf_lm ida
+bogomips	: 5865.81
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management:
+
+processor	: 5
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 26
+model name	: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+stepping	: 5
+cpu MHz		: 2933.438
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good reliable_tsc nonstop_tsc pni monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr dca sse4_1 sse4_2 popcnt lahf_lm ida
+bogomips	: 5865.83
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management:
+
+processor	: 6
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 26
+model name	: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+stepping	: 5
+cpu MHz		: 2933.438
+cache size	: 8192 KB
+physical id	: 1
+siblings	: 4
+core id		: 3
+cpu cores	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good reliable_tsc nonstop_tsc pni monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr dca sse4_1 sse4_2 popcnt lahf_lm ida
+bogomips	: 5865.82
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management:
+
+processor	: 7
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 26
+model name	: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+stepping	: 5
+cpu MHz		: 2933.438
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 4
+core id		: 3
+cpu cores	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good reliable_tsc nonstop_tsc pni monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr dca sse4_1 sse4_2 popcnt lahf_lm ida
+bogomips	: 5865.84
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management:
+
+
+----
+
+
+
+=== Memory information ===
+
+
+Checkpoint: free_memory
+
+----
+             total       used       free     shared    buffers     cached
+Mem:         48395      24088      24307          0        511      19738
+Low:         48395      24088      24307
+High:            0          0          0
+-/+ buffers/cache:       3838      44557
+Swap:          486          0        486
+Total:       48882      24088      24793
+
+----
+
+
+
+=== NUMA information ===
+
+
+
+==== NUMA overview ====
+
+
+Checkpoint: numactl
+
+----
+policy: default
+preferred node: current
+physcpubind: 0 1 2 3 4 5 6 7 
+cpubind: 0 1 
+nodebind: 0 1 
+membind: 0 1 
+
+----
+
+
+This section enumerates NUMA nodes with:
+
+----
+find /sys/devices/system/ -regextype posix-egrep -type d -regex '.*node[[:digit:]]+'
+----
+
+
+
+==== NUMA distance ====
+
+
+Checkpoint: file /sys/devices/system/node/node0/distance
+
+----
+10 20
+
+----
+
+
+Checkpoint: file /sys/devices/system/node/node1/distance
+
+----
+20 10
+
+----
+
+
+
+==== node0 information ====
+
+
+
+===== node0 memory =====
+
+
+Checkpoint: file /sys/devices/system/node/node0/meminfo
+
+----
+
+Node 0 MemTotal:     25155388 kB
+Node 0 MemFree:      14537244 kB
+Node 0 MemUsed:      10618144 kB
+Node 0 Active:         839684 kB
+Node 0 Inactive:      1487062 kB
+Node 0 Dirty:             376 kB
+Node 0 Writeback:           0 kB
+Node 0 FilePages:     8222868 kB
+Node 0 Mapped:          51816 kB
+Node 0 AnonPages:     1029960 kB
+Node 0 PageTables:       8352 kB
+Node 0 NFS_Unstable:        0 kB
+Node 0 Bounce:              0 kB
+Node 0 Slab:           718328 kB
+Node 0 SReclaimable:   618848 kB
+Node 0 SUnreclaim:      99480 kB
+Node 0 HugePages_Total:     0
+Node 0 HugePages_Free:      0
+
+----
+
+
+
+===== node0 statistics =====
+
+
+Checkpoint: file /sys/devices/system/node/node0/numastat
+
+----
+numa_hit 975575543
+numa_miss 4898807
+numa_foreign 33249041
+interleave_hit 16945
+local_node 975557466
+other_node 4916884
+
+----
+
+
+
+==== node1 information ====
+
+
+
+===== node1 memory =====
+
+
+Checkpoint: file /sys/devices/system/node/node1/meminfo
+
+----
+
+Node 1 MemTotal:     25165820 kB
+Node 1 MemFree:      10353140 kB
+Node 1 MemUsed:      14812680 kB
+Node 1 Active:         778431 kB
+Node 1 Inactive:      2596831 kB
+Node 1 Dirty:             332 kB
+Node 1 Writeback:           0 kB
+Node 1 FilePages:    12513392 kB
+Node 1 Mapped:          40240 kB
+Node 1 AnonPages:      973768 kB
+Node 1 PageTables:       8212 kB
+Node 1 NFS_Unstable:        0 kB
+Node 1 Bounce:              0 kB
+Node 1 Slab:           876704 kB
+Node 1 SReclaimable:   785536 kB
+Node 1 SUnreclaim:      91168 kB
+Node 1 HugePages_Total:     0
+Node 1 HugePages_Free:      0
+
+----
+
+
+
+===== node1 statistics =====
+
+
+Checkpoint: file /sys/devices/system/node/node1/numastat
+
+----
+numa_hit 1232462245
+numa_miss 33249041
+numa_foreign 4898807
+interleave_hit 16936
+local_node 1232461655
+other_node 33249631
+
+----
+
+
+
+=== PCI devices ===
+
+
+This section describes devices on the PCI bus.
+
+
+
+==== RAID devices ====
+
+
+Checkpoint: lspci RAID
+
+----
+0c:00.0 RAID bus controller: Hewlett-Packard Company Smart Array G6 controllers (rev 01)
+
+----
+
+
+
+==== SCSI devices ====
+
+
+Checkpoint: lspci SCSI
+
+----
+No SCSI devices
+
+----
+
+
+
+==== Ethernet devices ====
+
+
+Checkpoint: lspci Ethernet
+
+----
+02:00.0 Ethernet controller: Broadcom Corporation NetXtreme II BCM57711E 10-Gigabit PCIe
+02:00.1 Ethernet controller: Broadcom Corporation NetXtreme II BCM57711E 10-Gigabit PCIe
+
+----
+
+
+
+==== VGA devices ====
+
+
+Checkpoint: lspci VGA
+
+----
+01:03.0 VGA compatible controller: ATI Technologies Inc ES1000 (rev 02)
+
+----
+
+
+
+== Kernel information ==
+
+
+This section includes information related to the kernel.
+
+
+
+=== Kernel panic ===
+
+
+Checkpoint: panic
+
+----
+No kernel panic messages found.
+
+----
+
+
+
+== Network configuration ==
+
+
+This section covers configured and actual network settings.
+
+
+
+=== System-wide settings ===
+
+
+These settings apply to the host regardless of interface.
+
+
+
+==== Global network configuration ====
+
+
+Checkpoint: file /etc/sysconfig/network
+
+----
+NETWORKING=yes
+NETWORKING_IPV6=yes
+HOSTNAME=sample.example.com
+NOZEROCONF=disabled
+GATEWAY=11.3.1.1
+
+----
+
+
+
+==== Default gateways ====
+
+
+Checkpoint: default_gateway
+
+----
+default via 11.3.1.1 dev bond0 
+unreachable default dev lo  table unspec  proto none  metric -1  error -101 hoplimit 255
+unreachable default dev lo  table unspec  proto none  metric -1  error -101 hoplimit 255
+
+----
+
+
+
+==== Name resolution ====
+
+
+This section describes how the host resolves names.
+
+
+
+==== Hostname databases ====
+
+
+Checkpoint: nss-hosts
+
+----
+hosts:      files dns
+
+----
+
+
+
+==== Resolver ====
+
+
+Checkpoint: file /etc/resolv.conf
+
+----
+# also need access to satserver
+search example.com inf.ise.com mstest.iseoptions.com
+# 
+# prod site C
+nameserver 11.3.8.81
+#
+# inf site C
+nameserver 6.3.6.52
+#
+# satserver
+nameserver 172.24.60.170
+
+----
+
+
+
+==== Network post-configuration ====
+
+/sbin/ifup-local does not exist or is not executable.
+
+/sbin/ifdown-local does not exist or is not executable.
+
+
+
+==== IP rules ====
+
+
+Checkpoint: ip-rules
+
+----
+0:	from all lookup 255 
+32766:	from all lookup main 
+32767:	from all lookup default 
+
+----
+
+
+
+==== ARP Cache ====
+
+
+Checkpoint: arp-cache
+
+----
+11.3.254.212 dev ib1 lladdr 80:00:00:49:fe:80:00:00:00:00:00:00:00:02:c9:03:00:07:23:1e STALE
+11.3.254.211 dev ib1 lladdr 80:00:00:49:fe:80:00:00:00:00:00:00:00:02:c9:03:00:07:06:52 STALE
+11.3.254.218 dev ib1 lladdr 80:00:00:49:fe:80:00:00:00:00:00:00:00:02:c9:03:00:07:25:5e REACHABLE
+11.3.254.76 dev ib1 lladdr 80:00:00:49:fe:80:00:00:00:00:00:00:00:02:c9:03:00:06:bb:d0 REACHABLE
+11.3.1.1 dev bond0 lladdr 00:00:0c:9f:f0:01 REACHABLE
+
+----
+
+
+
+=== Configured Interfaces ===
+
+IMPORTANT: This section shows the configuration file,
+not the actual configuration.
+
+
+==== Interface: bond0 ====
+
+
+Checkpoint: file /etc/sysconfig/network-scripts/ifcfg-bond0
+
+----
+## HOSTNAME=sample
+## INTERFACE=bond0
+BONDING_OPTS="miimon=100 mode=1 primary=eth0"
+BOOTPROTO=static
+DEVICE=bond0
+HOSTNAME=sample
+IPADDR=11.3.1.52
+NETMASK=255.255.255.0
+ONBOOT=yes
+
+----
+
+
+
+==== Interface: eth0 ====
+
+
+Checkpoint: file /etc/sysconfig/network-scripts/ifcfg-eth0
+
+----
+## HOSTNAME=sample
+## INTERFACE=eth0
+BOOTPROTO=static
+DEVICE=eth0
+HOSTNAME=sample
+HWADDR=00:25:B3:A7:68:F8
+MASTER=bond0
+ONBOOT=yes
+SLAVE=yes
+
+----
+
+
+
+==== Interface: eth1 ====
+
+
+Checkpoint: file /etc/sysconfig/network-scripts/ifcfg-eth1
+
+----
+## HOSTNAME=sample
+## INTERFACE=eth1
+BOOTPROTO=static
+DEVICE=eth1
+HOSTNAME=sample
+HWADDR=00:25:B3:A7:68:FC
+MASTER=bond0
+ONBOOT=yes
+SLAVE=yes
+
+----
+
+
+
+==== Interface: ib0 ====
+
+
+Checkpoint: file /etc/sysconfig/network-scripts/ifcfg-ib0
+
+----
+## HOSTNAME=sample
+## INTERFACE=ib0
+BOOTPROTO=static
+DEVICE=ib0
+HOSTNAME=sample
+IPADDR=11.3.252.52
+NETMASK=255.255.254.0
+ONBOOT=yes
+TYPE=Infiniband
+
+----
+
+
+
+==== Interface: ib1 ====
+
+
+Checkpoint: file /etc/sysconfig/network-scripts/ifcfg-ib1
+
+----
+## HOSTNAME=sample
+## INTERFACE=ib1
+BOOTPROTO=static
+DEVICE=ib1
+HOSTNAME=sample
+IPADDR=11.3.254.52
+NETMASK=255.255.254.0
+ONBOOT=yes
+TYPE=Infiniband
+
+----
+
+
+
+==== Interface: lo ====
+
+
+Checkpoint: file /etc/sysconfig/network-scripts/ifcfg-lo
+
+----
+DEVICE=lo
+IPADDR=127.0.0.1
+NETMASK=255.0.0.0
+NETWORK=127.0.0.0
+# If you're having problems with gated making 127.0.0.0/8 a martian,
+# you can change this to something else (255.255.255.255, for example)
+BROADCAST=127.255.255.255
+ONBOOT=yes
+NAME=loopback
+
+----
+
+
+
+=== Actual interfaces ===
+
+This section shows actual configuration for devices
+that are administratively UP. The following command
+enumerates the interfaces:
+
+----
+/sbin/ip link show up | awk -F: '/UP/{print }' | sed -r 's/[[:space:]]//g'
+----
+
+
+==== Interface: lo ====
+
+
+Checkpoint: duplex lo
+
+----
+Settings for lo:
+	Link detected: yes
+
+----
+
+
+Checkpoint: ip-addr lo
+
+----
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 16436 qdisc noqueue 
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+
+----
+
+
+Checkpoint: ip-stats lo
+
+----
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 16436 qdisc noqueue 
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    RX: bytes  packets  errors  dropped overrun mcast   
+    2264895354 50225387 0       0       0       0      
+    TX: bytes  packets  errors  dropped carrier collsns 
+    2264895354 50225387 0       0       0       0      
+
+----
+
+
+
+==== Interface: eth0 ====
+
+
+Checkpoint: duplex eth0
+
+----
+Settings for eth0:
+	Supported ports: [ FIBRE ]
+	Supported link modes:   1000baseT/Full 
+	                        2500baseX/Full 
+	Supports auto-negotiation: Yes
+	Advertised link modes:  1000baseT/Full 
+	                        2500baseX/Full 
+	                        10000baseT/Full 
+	Advertised auto-negotiation: Yes
+	Speed: 1000Mb/s
+	Duplex: Full
+	Port: FIBRE
+	PHYAD: 1
+	Transceiver: internal
+	Auto-negotiation: on
+	Supports Wake-on: g
+	Wake-on: d
+	Current message level: 0x00000000 (0)
+	Link detected: yes
+
+----
+
+
+Checkpoint: ip-addr eth0
+
+----
+2: eth0: <BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master bond0 qlen 1000
+    link/ether 00:25:b3:a7:68:f8 brd ff:ff:ff:ff:ff:ff
+
+----
+
+
+Checkpoint: ip-stats eth0
+
+----
+2: eth0: <BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master bond0 qlen 1000
+    link/ether 00:25:b3:a7:68:f8 brd ff:ff:ff:ff:ff:ff
+    RX: bytes  packets  errors  dropped overrun mcast   
+    2700389976 42110497 0       0       0       0      
+    TX: bytes  packets  errors  dropped carrier collsns 
+    3178140112 21128417 0       0       0       0      
+
+----
+
+
+
+==== Interface: eth1 ====
+
+
+Checkpoint: duplex eth1
+
+----
+Settings for eth1:
+	Supported ports: [ FIBRE ]
+	Supported link modes:   1000baseT/Full 
+	                        2500baseX/Full 
+	Supports auto-negotiation: Yes
+	Advertised link modes:  1000baseT/Full 
+	                        2500baseX/Full 
+	                        10000baseT/Full 
+	Advertised auto-negotiation: Yes
+	Speed: 1000Mb/s
+	Duplex: Full
+	Port: FIBRE
+	PHYAD: 1
+	Transceiver: internal
+	Auto-negotiation: on
+	Supports Wake-on: g
+	Wake-on: d
+	Current message level: 0x00000000 (0)
+	Link detected: yes
+
+----
+
+
+Checkpoint: ip-addr eth1
+
+----
+3: eth1: <BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master bond0 qlen 1000
+    link/ether 00:25:b3:a7:68:f8 brd ff:ff:ff:ff:ff:ff
+
+----
+
+
+Checkpoint: ip-stats eth1
+
+----
+3: eth1: <BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master bond0 qlen 1000
+    link/ether 00:25:b3:a7:68:f8 brd ff:ff:ff:ff:ff:ff
+    RX: bytes  packets  errors  dropped overrun mcast   
+    1378804949 21160460 0       0       0       0      
+    TX: bytes  packets  errors  dropped carrier collsns 
+    0          0        0       0       0       0      
+
+----
+
+
+
+==== Interface: ib0 ====
+
+
+Checkpoint: duplex ib0
+
+----
+Settings for ib0:
+No data available
+
+----
+
+
+Checkpoint: ip-addr ib0
+
+----
+4: ib0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 2044 qdisc pfifo_fast qlen 256
+    link/infiniband 80:00:00:48:fe:80:00:00:00:00:00:00:00:02:c9:03:00:07:22:d9 brd 00:ff:ff:ff:ff:12:40:1b:ff:ff:00:00:00:00:00:00:ff:ff:ff:ff
+    inet 11.3.252.52/23 brd 11.3.253.255 scope global ib0
+    inet6 fe80::202:c903:7:22d9/64 scope link 
+       valid_lft forever preferred_lft forever
+
+----
+
+
+Checkpoint: ip-stats ib0
+
+----
+4: ib0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 2044 qdisc pfifo_fast qlen 256
+    link/infiniband 80:00:00:48:fe:80:00:00:00:00:00:00:00:02:c9:03:00:07:22:d9 brd 00:ff:ff:ff:ff:12:40:1b:ff:ff:00:00:00:00:00:00:ff:ff:ff:ff
+    RX: bytes  packets  errors  dropped overrun mcast   
+    80045636   318944206 0       0       0       0      
+    TX: bytes  packets  errors  dropped carrier collsns 
+    71920478   88674226 0       142565880 0       0      
+
+----
+
+
+
+==== Interface: ib1 ====
+
+
+Checkpoint: duplex ib1
+
+----
+Settings for ib1:
+No data available
+
+----
+
+
+Checkpoint: ip-addr ib1
+
+----
+5: ib1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 2044 qdisc pfifo_fast qlen 256
+    link/infiniband 80:00:00:49:fe:80:00:00:00:00:00:00:00:02:c9:03:00:07:22:da brd 00:ff:ff:ff:ff:12:40:1b:ff:ff:00:00:00:00:00:00:ff:ff:ff:ff
+    inet 11.3.254.52/23 brd 11.3.255.255 scope global ib1
+    inet6 fe80::202:c903:7:22da/64 scope link 
+       valid_lft forever preferred_lft forever
+
+----
+
+
+Checkpoint: ip-stats ib1
+
+----
+5: ib1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 2044 qdisc pfifo_fast qlen 256
+    link/infiniband 80:00:00:49:fe:80:00:00:00:00:00:00:00:02:c9:03:00:07:22:da brd 00:ff:ff:ff:ff:12:40:1b:ff:ff:00:00:00:00:00:00:ff:ff:ff:ff
+    RX: bytes  packets  errors  dropped overrun mcast   
+    3482555767 167372917 0       0       0       0      
+    TX: bytes  packets  errors  dropped carrier collsns 
+    3582929967 79686183 0       146894804 0       0      
+
+----
+
+
+
+==== Interface: bond0 ====
+
+
+Checkpoint: duplex bond0
+
+----
+Settings for bond0:
+No data available
+
+----
+
+
+Checkpoint: ip-addr bond0
+
+----
+6: bond0: <BROADCAST,MULTICAST,MASTER,UP,LOWER_UP> mtu 1500 qdisc noqueue 
+    link/ether 00:25:b3:a7:68:f8 brd ff:ff:ff:ff:ff:ff
+    inet 11.3.1.52/24 brd 11.3.1.255 scope global bond0
+    inet6 fe80::225:b3ff:fea7:68f8/64 scope link 
+       valid_lft forever preferred_lft forever
+
+----
+
+
+Checkpoint: ip-stats bond0
+
+----
+6: bond0: <BROADCAST,MULTICAST,MASTER,UP,LOWER_UP> mtu 1500 qdisc noqueue 
+    link/ether 00:25:b3:a7:68:f8 brd ff:ff:ff:ff:ff:ff
+    RX: bytes  packets  errors  dropped overrun mcast   
+    4079194925 63270957 0       0       0       0      
+    TX: bytes  packets  errors  dropped carrier collsns 
+    3178140112 21128417 0       0       0       0      
+
+----
+
+
+
+== Services information ==
+
+
+This section covers system daemons.
+
+
+
+=== Boot-time services ===
+
+
+
+==== Service: acpid ====
+
+
+Checkpoint: service acpid
+
+----
+acpid (pid 3718) is running...
+
+----
+
+
+
+==== Service: anacron ====
+
+
+Checkpoint: service anacron
+
+----
+anacron is stopped
+
+----
+
+
+
+==== Service: atd ====
+
+
+Checkpoint: service atd
+
+----
+atd (pid  3978) is running...
+
+----
+
+
+
+==== Service: auditd ====
+
+
+Checkpoint: service auditd
+
+----
+auditd (pid  3547) is running...
+
+----
+
+
+
+==== Service: autofs ====
+
+
+Checkpoint: service autofs
+
+----
+automount (pid 3829) is running...
+
+----
+
+
+
+==== Service: crond ====
+
+
+Checkpoint: service crond
+
+----
+crond (pid  15175) is running...
+
+----
+
+
+
+==== Service: firstboot ====
+
+
+Checkpoint: service firstboot
+
+----
+Usage: /etc/init.d/firstboot {start|stop}
+
+----
+
+
+
+==== Service: firstboot.ovo ====
+
+
+Checkpoint: service firstboot.ovo
+
+----
+Checking that OVO is installed: [  OK  ]
+
+----
+
+
+
+==== Service: firstboot.pawz ====
+
+
+Checkpoint: service firstboot.pawz
+
+----
+Checking that perfcap is configured: [  OK  ]
+
+----
+
+
+
+==== Service: gpm ====
+
+
+Checkpoint: service gpm
+
+----
+gpm (pid  3895) is running...
+
+----
+
+
+
+==== Service: gts-sysctl ====
+
+
+Checkpoint: service gts-sysctl
+
+----
+Usage: /etc/init.d/gts-sysctl start
+
+----
+
+
+
+==== Service: gtsStartup ====
+
+
+Checkpoint: service gtsStartup
+
+----
+Usage: /etc/init.d/gtsStartup {start|stop}
+
+----
+
+
+
+==== Service: haldaemon ====
+
+
+Checkpoint: service haldaemon
+
+----
+hald (pid 3726) is running...
+
+----
+
+
+
+==== Service: ip6tables ====
+
+
+Checkpoint: service ip6tables
+
+----
+Firewall is stopped.
+
+----
+
+
+
+==== Service: irqbalance ====
+
+
+Checkpoint: service irqbalance
+
+----
+irqbalance (pid 3567) is running...
+
+----
+
+
+
+==== Service: kudzu ====
+
+
+Checkpoint: service kudzu
+
+----
+kudzu has run
+
+----
+
+
+
+==== Service: lm_sensors ====
+
+
+Checkpoint: service lm_sensors
+
+----
+
+----
+
+
+
+==== Service: lvm2-monitor ====
+
+
+Checkpoint: service lvm2-monitor
+
+----
+
+----
+
+
+
+==== Service: mcstrans ====
+
+
+Checkpoint: service mcstrans
+
+----
+mcstransd is stopped
+
+----
+
+
+
+==== Service: mdmonitor ====
+
+
+Checkpoint: service mdmonitor
+
+----
+mdadm is stopped
+
+----
+
+
+
+==== Service: messagebus ====
+
+
+Checkpoint: service messagebus
+
+----
+dbus-daemon (pid 3664) is running...
+
+----
+
+
+
+==== Service: microcode_ctl ====
+
+
+Checkpoint: service microcode_ctl
+
+----
+
+----
+
+
+
+==== Service: netfs ====
+
+
+Checkpoint: service netfs
+
+----
+Configured NFS mountpoints: 
+/home
+Active NFS mountpoints: 
+/home
+/opt/gts/envs/001/home
+/opt/gts/envs/002/home
+
+----
+
+
+
+==== Service: network ====
+
+
+Checkpoint: service network
+
+----
+Configured devices:
+lo bond0 eth0 eth1 ib0 ib1
+Currently active devices:
+lo eth0 eth1 ib0 ib1 bond0
+
+----
+
+
+
+==== Service: nfslock ====
+
+
+Checkpoint: service nfslock
+
+----
+rpc.statd (pid  3629) is running...
+
+----
+
+
+
+==== Service: ntpd ====
+
+
+Checkpoint: service ntpd
+
+----
+ntpd (pid  6331) is running...
+
+----
+
+
+
+==== Service: openibd ====
+
+
+Checkpoint: service openibd
+
+----
+Low level hardware support loaded:
+	ib_mthca mlx4_ib 
+
+Upper layer protocol modules:
+	ib_iser ib_srp ib_sdp ib_ipoib 
+
+User space access modules:
+	rdma_ucm ib_ucm ib_uverbs ib_umad 
+
+Connection management modules:
+	rdma_cm ib_cm iw_cm 
+
+Configured IPoIB interfaces: ib0 ib1 
+Currently active IPoIB interfaces: ib0 ib1 
+
+----
+
+
+
+==== Service: osad ====
+
+
+Checkpoint: service osad
+
+----
+osad (pid  3887) is running...
+
+----
+
+
+
+==== Service: perfcap ====
+
+
+Checkpoint: service perfcap
+
+----
+
+----
+
+
+
+==== Service: portmap ====
+
+
+Checkpoint: service portmap
+
+----
+portmap (pid 3577) is running...
+
+----
+
+
+
+==== Service: rawdevices ====
+
+
+Checkpoint: service rawdevices
+
+----
+
+----
+
+
+
+==== Service: readahead_early ====
+
+
+Checkpoint: service readahead_early
+
+----
+
+----
+
+
+
+==== Service: restorecond ====
+
+
+Checkpoint: service restorecond
+
+----
+
+----
+
+
+
+==== Service: rhnsd ====
+
+
+Checkpoint: service rhnsd
+
+----
+rhnsd (pid  4068) is running...
+
+----
+
+
+
+==== Service: rpcgssd ====
+
+
+Checkpoint: service rpcgssd
+
+----
+
+----
+
+
+
+==== Service: rpcidmapd ====
+
+
+Checkpoint: service rpcidmapd
+
+----
+rpc.idmapd (pid 3651) is running...
+
+----
+
+
+
+==== Service: rsyslog ====
+
+
+Checkpoint: service rsyslog
+
+----
+rsyslogd (pid  16187) is running...
+
+----
+
+
+
+==== Service: setroubleshoot ====
+
+
+Checkpoint: service setroubleshoot
+
+----
+setroubleshootd is stopped
+
+----
+
+
+
+==== Service: smartd ====
+
+
+Checkpoint: service smartd
+
+----
+smartd (pid 4972) is running...
+
+----
+
+
+
+==== Service: snmpd ====
+
+
+Checkpoint: service snmpd
+
+----
+snmpd (pid  10245) is running...
+
+----
+
+
+
+==== Service: sshd ====
+
+
+Checkpoint: service sshd
+
+----
+openssh-daemon (pid  10192) is running...
+
+----
+
+
+
+==== Service: sysstat ====
+
+
+Checkpoint: service sysstat
+
+----
+
+----
+
+
+
+==== Service: uc4 ====
+
+
+Checkpoint: service uc4
+
+----
+Status of uc4-servicemanager: [  OK  ]
+Status of UCXJLI3: [  OK  ]
+
+----
+
+
+
+==== Service: xfs ====
+
+
+Checkpoint: service xfs
+
+----
+xfs (pid  3963) is running...
+
+----
+
+
+
+==== Service: xinetd ====
+
+
+Checkpoint: service xinetd
+
+----
+xinetd (pid  3868) is running...
+
+----
+
+
+
+==== Service: yum-updatesd ====
+
+
+Checkpoint: service yum-updatesd
+
+----
+yum-updatesd (pid 4444) is running...
+
+----
+
+
+
+== Storage information ==
+
+
+This section describes the block devices available to the host.
+
+
+
+=== Block devices ===
+
+
+Checkpoint: parted
+
+----
+
+Model: Compaq Smart Array (cpqarray)
+Disk /dev/cciss/c0d0: 585871963s
+Sector size (logical/physical): 512B/512B
+Partition Table: msdos
+
+Number  Start       End         Size        Type      File system  Flags
+ 1      1s          212159s     212159s     primary   ext3         boot 
+ 2      212160s     252959s     40800s      primary                     
+ 3      252960s     293759s     40800s      primary                     
+ 4      293760s     585871679s  585577920s  extended                    
+ 5      293761s     159038399s  158744639s  logical   ext3              
+ 6      159038401s  179030399s  19991999s   logical   ext3              
+ 7      179030401s  278255999s  99225599s   logical                lvm  
+ 8      278256001s  279251519s  995519s     logical   linux-swap        
+ 9      279251521s  279463679s  212159s     logical                     
+10      279463681s  279504479s  40799s      logical                     
+11      279504481s  279545279s  40799s      logical                     
+12      279545281s  438289919s  158744639s  logical                     
+13      438289921s  458281919s  19991999s   logical                     
+14      458281921s  557507519s  99225599s   logical                lvm  
+15      557507521s  585871679s  28364159s   logical                     
+
+
+Model: Unknown (unknown)
+Disk /dev/cciss/c0d0p1: 212158s
+Sector size (logical/physical): 512B/512B
+Partition Table: loop
+
+Number  Start  End      Size     File system  Flags
+ 1      0s     212158s  212159s  ext3              
+
+
+Model: Unknown (unknown)
+Disk /dev/cciss/c0d0p5: 158744638s
+Sector size (logical/physical): 512B/512B
+Partition Table: loop
+
+Number  Start  End         Size        File system  Flags
+ 1      0s     158744638s  158744639s  ext3              
+
+
+Model: Unknown (unknown)
+Disk /dev/cciss/c0d0p6: 19991998s
+Sector size (logical/physical): 512B/512B
+Partition Table: loop
+
+Number  Start  End        Size       File system  Flags
+ 1      0s     19991998s  19991999s  ext3              
+
+
+Model: Unknown (unknown)
+Disk /dev/cciss/c0d0p8: 995518s
+Sector size (logical/physical): 512B/512B
+Partition Table: loop
+
+Number  Start  End      Size     File system  Flags
+ 1      0s     995518s  995519s  linux-swap        
+
+
+----
+
+
+
+=== Filesystems ===
+
+
+This section describes the character-based filesystems
+currently mounted on the host.
+
+
+
+==== Mounted filesystems ====
+
+
+Checkpoint: mount
+
+----
+/dev/mapper/vg-sample.example.com-sys on / type ext3 (rw)
+proc on /proc type proc (rw)
+sysfs on /sys type sysfs (rw)
+devpts on /dev/pts type devpts (rw,gid=5,mode=620)
+/dev/cciss/c0d0p5 on /opt/gts type ext3 (rw)
+/dev/mapper/vg-sample.example.com-tmp on /tmp type ext3 (rw)
+/dev/mapper/vg-sample.example.com-home on /home type ext3 (rw)
+/dev/mapper/vg-sample.example.com-usr on /usr type ext3 (rw)
+/dev/cciss/c0d0p6 on /var/log/sa type ext3 (rw)
+/dev/cciss/c0d0p1 on /boot type ext3 (rw)
+tmpfs on /dev/shm type tmpfs (rw)
+none on /proc/sys/fs/binfmt_misc type binfmt_misc (rw)
+sunrpc on /var/lib/nfs/rpc_pipefs type rpc_pipefs (rw)
+ic-nfs01.inf.ise.com:/exports/home on /home type nfs (rw,soft,intr,addr=6.3.3.56)
+/dev/mapper/vg-sample.example.com-perfdata on /usr/local/perfcap/data type ext3 (rw)
+/dev on /opt/gts/envs/001/dev type none (rw,bind)
+/usr on /opt/gts/envs/001/usr type none (rw,bind)
+/var on /opt/gts/envs/001/var type none (rw,bind)
+/bin on /opt/gts/envs/001/bin type none (rw,bind)
+/sbin on /opt/gts/envs/001/sbin type none (rw,bind)
+/lib on /opt/gts/envs/001/lib type none (rw,bind)
+/lib64 on /opt/gts/envs/001/lib64 type none (rw,bind)
+/home on /opt/gts/envs/001/home type none (rw,bind)
+proc on /opt/gts/envs/001/proc type proc (rw)
+sysfs on /opt/gts/envs/001/sys type sysfs (rw)
+tmpfs on /opt/gts/envs/001/dev/shm type tmpfs (rw)
+devpts on /opt/gts/envs/001/dev/pts type devpts (rw,gid=5,mode=620)
+/opt/gts/envs/001/localrpm on /opt/gts/envs/001/var/lib/rpm type none (rw,bind)
+/opt/gts/rels on /opt/gts/envs/001/mnt/rels type none (rw,bind)
+/dev on /opt/gts/envs/002/dev type none (rw,bind)
+/usr on /opt/gts/envs/002/usr type none (rw,bind)
+/var on /opt/gts/envs/002/var type none (rw,bind)
+/bin on /opt/gts/envs/002/bin type none (rw,bind)
+/sbin on /opt/gts/envs/002/sbin type none (rw,bind)
+/lib on /opt/gts/envs/002/lib type none (rw,bind)
+/lib64 on /opt/gts/envs/002/lib64 type none (rw,bind)
+/home on /opt/gts/envs/002/home type none (rw,bind)
+proc on /opt/gts/envs/002/proc type proc (rw)
+sysfs on /opt/gts/envs/002/sys type sysfs (rw)
+tmpfs on /opt/gts/envs/002/dev/shm type tmpfs (rw)
+devpts on /opt/gts/envs/002/dev/pts type devpts (rw,gid=5,mode=620)
+/opt/gts/envs/002/localrpm on /opt/gts/envs/002/var/lib/rpm type none (rw,bind)
+/opt/gts/rels on /opt/gts/envs/002/mnt/rels type none (rw,bind)
+
+----
+
+
+
+==== Filesystem utilization ====
+
+
+Checkpoint: disk_utilization
+
+----
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/mapper/vg-sample.example.com-sys  3.9G  794M  2.9G  22% /
+/dev/cciss/c0d0p5      74G   17G   53G  24% /opt/gts
+/dev/mapper/vg-sample.example.com-tmp  3.9G  137M  3.6G   4% /tmp
+/dev/mapper/vg-sample.example.com-home  497G   74G  398G  16% /home
+/dev/mapper/vg-sample.example.com-usr  3.9G  1.8G  2.0G  48% /usr
+/dev/cciss/c0d0p6     9.3G  4.8G  4.1G  54% /var/log/sa
+/dev/cciss/c0d0p1     101M   19M   77M  20% /boot
+tmpfs                  24G     0   24G   0% /dev/shm
+ic-nfs01.inf.ise.com:/exports/home  497G   74G  398G  16% /home
+/dev/mapper/vg-sample.example.com-perfdata 1008M   88M  869M  10% /usr/local/perfcap/data
+tmpfs                  24G     0   24G   0% /opt/gts/envs/001/dev/shm
+tmpfs                  24G     0   24G   0% /opt/gts/envs/002/dev/shm
+
+----
+
