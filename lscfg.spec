@@ -80,6 +80,7 @@ a2x -d manpage -f manpage src/doc/lscfg.8.asciidoc
 %{_sbindir}/lscfg.kernel
 %{_sbindir}/lscfg.network
 %{_sbindir}/lscfg.services
+%{_sbindir}/lscfg.virt
 
 # configs
 %dir %{_sysconfdir}/%{name}
