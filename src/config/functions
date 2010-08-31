@@ -104,6 +104,7 @@ EOF
 }
 
 do_checkpoint() {
+  _rc=0
   _file=$checkpoints_dir/$1
   [[ -r $_file ]] || return 1
 
@@ -128,17 +129,24 @@ do_checkpoint() {
   fi
   echo
   echo "----"
-  nice -n +19 bash $_cmd | tr -d '\033'
+  {
+  nice -n +19 bash $_cmd
+  # capture the return code
   _rc=$?
+  echo
+  echo "Return code: $_rc"
+  # then clean up the output
+  } | tr -d '\033' | sed 's/^----/ ----/'
+
   # guarantee a non-empty code block
-  echo 
+  #echo 
   echo "----"
 
   # show warning if bad exit status
-  echo
-  if [ $_rc -ne 0 ]; then
-    echo "WARNING: The checkpoint exit status was $_rc"
-  fi
+  #echo
+  #if [ $_rc -ne 0 ]; then
+    #echo "WARNING: The checkpoint exit status was $_rc"
+  #fi
   return $_rc
 }
 
