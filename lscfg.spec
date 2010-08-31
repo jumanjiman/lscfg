@@ -51,6 +51,7 @@ a2x -d manpage -f manpage src/doc/lscfg.8.asciidoc
 %{__install} -p -m0755 src/lscfg.kernel %{buildroot}/%{_sbindir}
 %{__install} -p -m0755 src/lscfg.network %{buildroot}/%{_sbindir}
 %{__install} -p -m0755 src/lscfg.services %{buildroot}/%{_sbindir}
+%{__install} -p -m0755 src/lscfg.virt %{buildroot}/%{_sbindir}
 
 # checkpoints
 %{__mkdir_p} %{buildroot}/%{_datadir}/%{name}
@@ -99,12 +100,22 @@ a2x -d manpage -f manpage src/doc/lscfg.8.asciidoc
 %{_datadir}/%{name}/ip-rules
 %{_datadir}/%{name}/ip-stats
 %{_datadir}/%{name}/lspci
+%{_datadir}/%{name}/lvdisplay
+%{_datadir}/%{name}/lvm-filter
 %{_datadir}/%{name}/mount
+%{_datadir}/%{name}/multipath
 %{_datadir}/%{name}/nss-hosts
 %{_datadir}/%{name}/numactl
 %{_datadir}/%{name}/panic
 %{_datadir}/%{name}/parted
+%{_datadir}/%{name}/pvdisplay
 %{_datadir}/%{name}/service
+%{_datadir}/%{name}/vgdisplay
+%{_datadir}/%{name}/virsh-capabilities
+%{_datadir}/%{name}/virsh-dominfo
+%{_datadir}/%{name}/virsh-list
+%{_datadir}/%{name}/virsh-net-list
+%{_datadir}/%{name}/xm-list
 
 
 %changelog
