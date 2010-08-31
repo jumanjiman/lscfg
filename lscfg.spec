@@ -1,6 +1,6 @@
 Name:		lscfg
 Version:	1.3.0
-Release:	5%{?dist}
+Release:	6%{?dist}
 Summary:	details the basic configuration of a Linux system
 
 Group:		Applications/System
@@ -120,6 +120,10 @@ a2x -d manpage -f manpage src/doc/lscfg.8.asciidoc
 
 
 %changelog
+* Tue Aug 31 2010 Paul Morgan <jumanjiman@gmail.com> 1.3.0-6
+- make new checkpoints executable
+- protect output from asciidoc interpretation
+
 * Tue Aug 31 2010 Paul Morgan <jumanjiman@gmail.com> 1.3.0-5
 - add lscfg.virt to files
 
