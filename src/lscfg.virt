@@ -1,0 +1,56 @@
+#!/bin/bash
+
+### This software may be freely redistributed under the terms of the GNU
+### public license.
+
+# user may call via sudo
+program_directory="${0%/*}"
+if [ -n "$program_directory" ]; then
+       PATH="$PATH:$program_directory"
+       export PATH
+fi
+
+
+
+. /etc/lscfg/functions || exit 1
+
+heading 1 "Virtualization information"
+
+has_virsh=$(/bin/false)
+if [ -x /usr/bin/virsh ]; then
+  cp=virsh-list
+  has_virsh=$(/bin/true)
+elif [ -x /usr/sbin/xm ]; then
+  cp=xm-list
+else
+  cp=""
+fi
+
+if [ -z "${cp}" ]; then
+  cat << "EOF"
+
+This host does not have the `xm` or `virsh` commands.
+
+EOF
+  exit 
+fi
+
+# if we're still here, we have a checkpoint $cp
+
+heading 2 "Virtual machines"
+do_checkpoint $cp
+
+if $has_virsh; then
+  heading 2 "Virtual capabilities"
+  do_checkpoint virsh-capabilities
+
+  heading 2 "Virtual networks"
+  do_checkpoint virsh-net-list
+
+  heading 2 "Running domains"
+  domains="$(/usr/bin/virsh list | awk '$1~/[[:digit:]]+/{print $1}')"
+  for dom in $domains; do
+    heading 3 "Domain $dom"
+    do_checkpoint dominfo $dom
+  done
+fi

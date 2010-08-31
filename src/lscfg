@@ -63,6 +63,7 @@ case $1 in
     lscfg.network
     lscfg.services
     lscfg.disk
+	lscfg.virt
 	show_checkpoints
 	;;
 
