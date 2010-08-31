@@ -20,8 +20,18 @@ echo
 echo "This section describes the block devices available to the host."
 echo
 
+heading 2 "Multipath"
+do_checkpoint multipath
+
 heading 2 "Block devices"
 do_checkpoint parted
+
+
+heading 2 "Logical Volumes"
+do_checkpoint lvm-filter
+do_checkpoint pvdisplay
+do_checkpoint vgdisplay
+do_checkpoint lvdisplay
 
 
 heading 2 "Filesystems"
