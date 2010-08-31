@@ -1,6 +1,6 @@
 Name:		lscfg
 Version:	1.3.0
-Release:	6%{?dist}
+Release:	7%{?dist}
 Summary:	details the basic configuration of a Linux system
 
 Group:		Applications/System
@@ -120,6 +120,9 @@ a2x -d manpage -f manpage src/doc/lscfg.8.asciidoc
 
 
 %changelog
+* Tue Aug 31 2010 Paul Morgan <jumanjiman@gmail.com> 1.3.0-7
+- lvm commands have different path between fedora and rhel
+
 * Tue Aug 31 2010 Paul Morgan <jumanjiman@gmail.com> 1.3.0-6
 - make new checkpoints executable
 - protect output from asciidoc interpretation
