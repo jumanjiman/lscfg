@@ -1,0 +1,9 @@
+/var/log/lscfg {
+  daily
+  dateext
+  maxage 30
+  missingok
+  nocompress
+  nocreate
+  noolddir
+}

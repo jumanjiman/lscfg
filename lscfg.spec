@@ -22,6 +22,8 @@ Requires:	net-tools
 Requires:	procps
 Requires:	util-linux
 Requires:	iproute
+Requires:	logrotate
+Requires:	crontabs
 
 %description
 Gives an overview of system configuration. 
@@ -37,6 +39,13 @@ a2x -d manpage -f manpage src/doc/lscfg.8.asciidoc
 
 %install
 %{__rm} -rf %{buildroot}
+
+# logdir
+%{__mkdir_p} %{buildroot}/%{_var}/log/%{name}
+
+# logrotate
+%{__mkdir_p} %{buildroot}/%{_sysconfdir}/logrotate.d
+%{__install} -p -m0644 src/config/logrotate.d/lscfg %{buildroot}/%{_sysconfdir}/logrotate.d
 
 # documentation
 %{__mkdir_p} %{buildroot}/%{_mandir}/man8
@@ -59,7 +68,12 @@ a2x -d manpage -f manpage src/doc/lscfg.8.asciidoc
 
 # configs
 %{__mkdir_p} %{buildroot}/%{_sysconfdir}/%{name}
-%{__install} -p -m0644 src/config/* %{buildroot}/%{_sysconfdir}/%{name}
+%{__install} -p -m0644 src/config/functions %{buildroot}/%{_sysconfdir}/%{name}
+%{__install} -p -m0644 src/config/lscfg.conf %{buildroot}/%{_sysconfdir}/%{name}
+
+# cronjobs
+%{__mkdir_p} %{buildroot}%{_sysconfdir}/cron.daily
+%{__install} -p -m0755 src/config/cron.daily/lscfg %{buildroot}%{_sysconfdir}/cron.daily
 
 
 
@@ -86,6 +100,11 @@ a2x -d manpage -f manpage src/doc/lscfg.8.asciidoc
 %dir %{_sysconfdir}/%{name}
 %config %{_sysconfdir}/%{name}/lscfg.conf
 %config %{_sysconfdir}/%{name}/functions
+%config %{_sysconfdir}/cron.daily/lscfg
+%config %{_sysconfdir}/logrotate.d/lscfg
+
+# logdir
+%dir %{_var}/log/%{name}
 
 # checkpoints
 %dir %{_datadir}/%{name}
@@ -117,6 +136,19 @@ a2x -d manpage -f manpage src/doc/lscfg.8.asciidoc
 %{_datadir}/%{name}/virsh-list
 %{_datadir}/%{name}/virsh-net-list
 %{_datadir}/%{name}/xm-list
+
+
+# NOTE:
+# see http://fedoraproject.org/wiki/Packaging/ScriptletSnippets
+
+%post
+# always reload crond to pick up add/delete/change
+/sbin/service crond reload || :
+
+%postun
+if [ $1 -eq 0 ]; then
+  /sbin/service crond reload || :
+fi
 
 
 %changelog

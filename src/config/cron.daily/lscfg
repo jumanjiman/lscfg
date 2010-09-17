@@ -1,0 +1,3 @@
+#!/bin/bash
+
+lscfg -a > /var/log/lscfg/lscfg.out
