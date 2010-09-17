@@ -1,6 +1,6 @@
 Name:		lscfg
-Version:	1.3.0
-Release:	7%{?dist}
+Version:	1.3.1
+Release:	1%{?dist}
 Summary:	details the basic configuration of a Linux system
 
 Group:		Applications/System
@@ -152,6 +152,9 @@ fi
 
 
 %changelog
+* Fri Sep 17 2010 Paul Morgan <jumanjiman@gmail.com> 1.3.1-1
+- Add: daily cron job and logrotate config (jumanjiman@gmail.com)
+
 * Tue Aug 31 2010 Paul Morgan <jumanjiman@gmail.com> 1.3.0-7
 - lvm commands have different path between fedora and rhel
 
